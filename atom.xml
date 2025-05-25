@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>花生豆拍黄瓜</title>
+  <title>西西弗</title>
   
   <subtitle>行是知之始，知是行之成</subtitle>
   <link href="http://blog.soul11201.com/atom.xml" rel="self"/>
   
   <link href="http://blog.soul11201.com/"/>
-  <updated>2024-07-02T14:59:25.834Z</updated>
+  <updated>2024-11-27T16:21:32.224Z</updated>
   <id>http://blog.soul11201.com/</id>
   
   <author>
@@ -15,6 +15,40 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>分布式锁 - Redlock</title>
+    <link href="http://blog.soul11201.com/2024/11/27/redlock/"/>
+    <id>http://blog.soul11201.com/2024/11/27/redlock/</id>
+    <published>2024-11-27T15:38:49.000Z</published>
+    <updated>2024-11-27T16:21:32.224Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="redlock">Redlock</h2><h3 id="锁所需要具有的属性">锁所需要具有的属性</h3><ol type="1"><li>独享 - 在任意一个时刻，只有一个客户端持有锁</li><li>无死锁 - 持锁客户端失联（崩溃、网络分区），锁仍然可以被自动释放</li><li>容错 - 只要大部分Redis节点都活着，客户端就可以获取和释放锁</li></ol><h3 id="面临的问题">面临的问题</h3><ol type="1"><li>系统层 - 网络分区、崩溃、重启等问题</li><li>Redis层 - Redis节点的崩溃、重启等问题</li><li>客户端层 - 客户端的崩溃、重启等问题</li><li>重入 - 同一个客户端多次获取锁</li><li>锁续期 - 锁的有效期到了，但是业务还没有执行完，需要续期</li><li>释放 - 释放锁的时候，锁已经被其他客户端获取</li><li>时钟漂移 - 不同的Redis节点的时间不一致</li><li>时钟回拨 - 时钟回拨导致锁的有效期不准确</li><li>误删 - 误删其他客户端的锁</li><li></li></ol><h3 id="解决方法">解决方法</h3><ol type="1"><li>互斥性 - 通过SETNX命令实现</li><li>无死锁 - 通过设置锁的过期时间实现</li><li>容错性 - 通过大多数原则实现</li><li>重入 - 通过客户端ID实现</li><li>锁续期 - 通过锁的过期时间实现</li><li>释放 - 通过客户端ID实现</li><li>时钟漂移 - 通过设置锁的过期时间实现</li><li>时钟回拨 - 通过设置锁的过期时间实现</li><li>误删 - 通过客户端ID实现</li></ol><h3 id="算法">算法</h3><h4 id="单机算法">单机算法</h4><ol type="1"><li><p>获取锁</p><p><code>SET resource_name my_random_value NX PX 30000</code></p></li><li><p>释放锁</p></li></ol><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-keyword">if</span> redis.call(<span class="hljs-string">&quot;get&quot;</span>,KEYS[<span class="hljs-number">1</span>]) == ARGV[<span class="hljs-number">1</span>] <span class="hljs-keyword">then</span> <br>  <span class="hljs-keyword">return</span> redis.call(<span class="hljs-string">&quot;del&quot;</span>,KEYS[<span class="hljs-number">1</span>]) <br><span class="hljs-keyword">else</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span> <br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure><h4 id="分布式算法">分布式算法</h4><ol type="1"><li>获取锁<ol type="1"><li>生成一个随机的客户端ID</li><li>依次向N个Redis节点获取锁</li><li>如果大多数Redis节点都获取到了锁，那么认为获取锁成功</li><li>如果获取锁失败，那么向所有Redis节点释放锁</li></ol></li></ol><h2 id="yii2-redis-lock-代码实现">Yii2 Redis lock 代码实现</h2><figure><img src="/assets/imgs/2024-11-23_13-54.png" alt="类图" /><figcaption aria-hidden="true">类图</figcaption></figure><ol type="1"><li>随机数获取实现<code>Yii::$app-&gt;security-&gt;generateRandomString</code> 底层依赖https://www.php.net/manual/en/function.random-bytes.php</li></ol><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><code class="hljs php"> <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * Acquires a lock by name.</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> string $name of the lock to be acquired. Must be unique.</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> int $timeout time (in seconds) to wait for lock to be released. Defaults to `0` meaning that method will return</span><br><span class="hljs-comment">     * false immediately in case lock was already acquired.</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> bool lock acquiring result.</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">acquireLock</span>(<span class="hljs-params"><span class="hljs-variable">$name</span>, <span class="hljs-variable">$timeout</span> = <span class="hljs-number">0</span></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-variable">$key</span> = <span class="hljs-variable language_">$this</span>-&gt;<span class="hljs-title function_ invoke__">calculateKey</span>(<span class="hljs-variable">$name</span>);<br>        <span class="hljs-variable">$value</span> = <span class="hljs-title class_">Yii</span>::<span class="hljs-variable">$app</span>-&gt;security-&gt;<span class="hljs-title function_ invoke__">generateRandomString</span>(<span class="hljs-number">20</span>);<br><br>        <span class="hljs-variable">$result</span> = <span class="hljs-variable language_">$this</span>-&gt;<span class="hljs-title function_ invoke__">retryAcquire</span>(<span class="hljs-variable">$timeout</span>, function () <span class="hljs-keyword">use</span> ($<span class="hljs-title">key</span>, $<span class="hljs-title">value</span>) &#123;<br>            <span class="hljs-title">return</span> $<span class="hljs-title">this</span>-&gt;<span class="hljs-title">redis</span>-&gt;<span class="hljs-title">executeCommand</span>(&#x27;<span class="hljs-title">SET</span>&#x27;, [$<span class="hljs-title">key</span>, $<span class="hljs-title">value</span>, &#x27;<span class="hljs-title">NX</span>&#x27;, &#x27;<span class="hljs-title">PX</span>&#x27;, (<span class="hljs-title">int</span>) ($<span class="hljs-title">this</span>-&gt;<span class="hljs-title">expire</span> * 1000)]);<br>        &#125;);<br><br>        <span class="hljs-keyword">if</span> (<span class="hljs-variable">$result</span>) &#123;<br>            <span class="hljs-variable language_">$this</span>-&gt;_lockValues[<span class="hljs-variable">$name</span>] = <span class="hljs-variable">$value</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable">$result</span>;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * Releases acquired lock. This method will return `false` in case the lock was not found or Redis command failed.</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> string $name of the lock to be released. This lock must already exist.</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> bool lock release result: `false` in case named lock was not found or Redis command failed.</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">releaseLock</span>(<span class="hljs-params"><span class="hljs-variable">$name</span></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-built_in">static</span> <span class="hljs-variable">$releaseLuaScript</span> = <span class="hljs-string">&lt;&lt;&lt;LUA</span><br><span class="hljs-string">if redis.call(&quot;GET&quot;,KEYS[1])==ARGV[1] then</span><br><span class="hljs-string">    return redis.call(&quot;DEL&quot;,KEYS[1])</span><br><span class="hljs-string">else</span><br><span class="hljs-string">    return 0</span><br><span class="hljs-string">end</span><br><span class="hljs-string">LUA</span>;<br>        <span class="hljs-keyword">if</span> (<br>            !<span class="hljs-keyword">isset</span>(<span class="hljs-variable language_">$this</span>-&gt;_lockValues[<span class="hljs-variable">$name</span>])<br>            || !<span class="hljs-variable language_">$this</span>-&gt;redis-&gt;<span class="hljs-title function_ invoke__">executeCommand</span>(<span class="hljs-string">&#x27;EVAL&#x27;</span>, [<br>                <span class="hljs-variable">$releaseLuaScript</span>,<br>                <span class="hljs-number">1</span>,<br>                <span class="hljs-variable">$this</span>-&gt;<span class="hljs-title function_ invoke__">calculateKey</span>(<span class="hljs-variable">$name</span>),<br>                <span class="hljs-variable">$this</span>-&gt;_lockValues[<span class="hljs-variable">$name</span>],<br>            ])<br>        ) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">unset</span>(<span class="hljs-variable language_">$this</span>-&gt;_lockValues[<span class="hljs-variable">$name</span>]);<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * Generates a unique key used for storing the mutex in Redis.</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> string $name mutex name.</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> string a safe cache key associated with the mutex name.</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">calculateKey</span>(<span class="hljs-params"><span class="hljs-variable">$name</span></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">$this</span>-&gt;keyPrefix . <span class="hljs-title function_ invoke__">md5</span>(<span class="hljs-title function_ invoke__">json_encode</span>([<span class="hljs-keyword">__CLASS__</span>, <span class="hljs-variable">$name</span>]));<br>    &#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;redlock&quot;&gt;Redlock&lt;/h2&gt;
+&lt;h3 id=&quot;锁所需要具有的属性&quot;&gt;锁所需要具有的属性&lt;/h3&gt;
+&lt;ol type=&quot;1&quot;&gt;
+&lt;li&gt;独享 - 在任意一个时刻，只有一个客户端持有锁&lt;/li&gt;
+&lt;li&gt;无死锁 - 持锁客户端失联（崩溃、网络分区），锁仍</summary>
+      
+    
+    
+    
+    
+    <category term="PHP" scheme="http://blog.soul11201.com/tags/PHP/"/>
+    
+    <category term="Yii2" scheme="http://blog.soul11201.com/tags/Yii2/"/>
+    
+    <category term="并发" scheme="http://blog.soul11201.com/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+    <category term="Redis" scheme="http://blog.soul11201.com/tags/Redis/"/>
+    
+    <category term="分布式锁" scheme="http://blog.soul11201.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/"/>
+    
+  </entry>
   
   <entry>
     <title>Golang - N个协程交替打印数字</title>
@@ -453,27 +487,6 @@ syntax error (line 52): </summary>
     <category term="技术" scheme="http://blog.soul11201.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     <category term="Shell" scheme="http://blog.soul11201.com/categories/%E6%8A%80%E6%9C%AF/Shell/"/>
-    
-    
-    <category term="Linux" scheme="http://blog.soul11201.com/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>virtualbox 中的 win7  无法识别 usb</title>
-    <link href="http://blog.soul11201.com/2021/04/14/virtualbox-usb/"/>
-    <id>http://blog.soul11201.com/2021/04/14/virtualbox-usb/</id>
-    <published>2021-04-14T08:27:01.000Z</published>
-    <updated>2024-06-17T15:53:37.289Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">yay -S virtualbox-ext-oracle virtualbox virtualbox-guest-iso<br><br>sudo modprobe vboxdrv<br><br>sudo usermod -a -G  vboxusers `<span class="hljs-built_in">whoami</span>`<br><br>reboot<br></code></pre></td></tr></table></figure><ul><li>https://bbs.archlinux.org/viewtopic.php?id=194816</li><li>https://bbs.archlinuxcn.org/viewtopic.php?id=4581</li><li>https://www.linuxtechi.com/install-virtualbox-on-arch-linux/</li><li>https://blog.csdn.net/moliqin/article/details/79588382</li><li>http://ivo-wang.github.io/2018/02/22/arch-virtualbox-usb/</li></ul>]]></content>
-    
-    
-    <summary type="html"> </summary>
-    
-    
-    
-    <category term="技术" scheme="http://blog.soul11201.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
     <category term="Linux" scheme="http://blog.soul11201.com/tags/Linux/"/>
