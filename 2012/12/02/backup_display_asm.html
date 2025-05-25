@@ -98,8 +98,11 @@
 }
 </style><!-- hexo injector head_begin end -->
   <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
   <link rel="icon" href="/img/favicon.png">
+  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -115,13 +118,12 @@
 <meta property="og:description" content="用汇编在屏幕窗口中显示时间 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394;al存放从c">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2012-12-02T09:21:56.000Z">
-<meta property="article:modified_time" content="2024-07-01T08:30:00.269Z">
+<meta property="article:modified_time" content="2025-05-25T11:14:53.089Z">
 <meta property="article:author" content="soul11201">
 <meta property="article:tag" content="汇编">
+<meta property="article:tag" content="微机组成原理">
 <meta name="twitter:card" content="summary_large_image">
   
-  
-    <meta name="referrer" content="no-referrer-when-downgrade">
   
   
   <title>显示时间 - 西西弗</title>
@@ -141,7 +143,7 @@
 <!-- 主题依赖的图标库，不要自行修改 -->
 <!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
 
@@ -162,7 +164,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":120,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"yv06ESJ2J5KwPSogj0y5aqzY-MdYXbMMI","app_key":"ODnROP22iCurdpYj4tNzJtji","server_url":null,"path":"window.location.pathname","ignore_local":false},"gtag":null},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":120,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"yv06ESJ2J5KwPSogj0y5aqzY-MdYXbMMI","app_key":"ODnROP22iCurdpYj4tNzJtji","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"gtag":null,"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -171,8 +173,6 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-  
-
   
 
   
@@ -238,30 +238,6 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>归档</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
-                <i class="iconfont icon-category-fill"></i>
-                <span>分类</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
               <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
@@ -277,18 +253,6 @@
               <a class="nav-link" href="/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/links/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>友链</span>
               </a>
             </li>
           
@@ -316,7 +280,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/assets/imgs/post_cover/default.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -329,6 +293,11 @@
         
           
   <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        soul11201
+      </span>
     
     
       <span class="post-meta">
@@ -365,6 +334,15 @@
 
     
     
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
+    
   </div>
 
 
@@ -397,11 +375,22 @@
           <article class="post-content mx-auto">
             <h1 id="seo-header">显示时间</h1>
             
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    <!-- compatible with older versions-->
+                    本文最后更新于：2025-05-25T19:14:53+08:00
+                  
+                  
+
+                
+              </p>
+            
             
               <div class="markdown-body">
                 
                 <p>用汇编在屏幕窗口中显示时间</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><code class="hljs asm"><br>;al存放从cmos的ram中读取的数据，ah中存放数据显示的格式。<br>;es:di 用来指定在屏幕中那个位置显示，以何种样式。<br><br>assume cs:code,ds:data<br>data segment<br><br>data ends<br><br>code segment<br>  s:<br>  mov bx,0b800h <br>  mov es,bx<br>  <br> from:<br>  mov di,160*11+80   ;es:[di]，di用来存放开始的位置；<br> ;显示时间<br>  mov ah,&#x27;:&#x27;         ;;;;;<br>  <br>  mov al,4<br>  out 70h,al<br>  in al,71h<br>  ;取时<br>  call display<br>  call dis_maohao<br>  ;取分钟<br>  mov al,2<br>  out 70h,al<br>  in al,71h<br>  <br>  call display<br>  call dis_maohao<br>  ;取秒<br>  mov al,0<br>  out 70h,al<br>  in al,71h<br>  <br>  call display<br>  <br>  ;显示年份与月份<br>  mov ah,&#x27;/&#x27;<br>  mov di,12*160+80<br>  <br>     ;取年份<br>  mov al,9<br>  out 70h,al<br>  in al,71h<br>  call display<br>  call dis_maohao<br>  ;取月份<br>  mov al,8<br>  out 70h,al<br>  in al,71h<br>  call display<br>  call dis_maohao  <br>  ;取日期<br>  mov al,7<br>  out 70h,al<br>  in al,71h<br>  call display<br> jmp from<br> mov ax,4c00h<br> int 21h<br> ;子函数<br> display:<br>   push ax<br>   mov cl,4<br>   shr al,cl<br>   add al,48<br>   call display_son<br>   pop ax<br>   and al,0fh<br>   add al,48<br>   call display_son<br>  ret<br> display_son:<br>  ;将al中的数据显示在screen中<br>  mov byte ptr es:[di],al<br>  inc di<br>  mov byte ptr es:[di],01000010b<br>  inc di<br>  <br>  ret<br> dis_maohao:<br>  mov byte ptr es:[di],ah<br>  inc di<br>  mov byte ptr es:[di],01000010b<br>  inc di<br>  ret  <br>code ends<br>end s<br><br><br><br></code></pre></td></tr></table></figure>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><br><span class="hljs-comment">;al存放从cmos的ram中读取的数据，ah中存放数据显示的格式。</span><br><span class="hljs-comment">;es:di 用来指定在屏幕中那个位置显示，以何种样式。</span><br><br><span class="hljs-meta">assume</span> <span class="hljs-built_in">cs</span>:code,<span class="hljs-built_in">ds</span>:data<br>data <span class="hljs-meta">segment</span><br><br>data ends<br><br>code <span class="hljs-meta">segment</span><br><span class="hljs-symbol">  s:</span><br>  <span class="hljs-keyword">mov</span> <span class="hljs-built_in">bx</span>,<span class="hljs-number">0b800h</span> <br>  <span class="hljs-keyword">mov</span> <span class="hljs-built_in">es</span>,<span class="hljs-built_in">bx</span><br><span class="hljs-symbol">  </span><br><span class="hljs-symbol"> from:</span><br>  <span class="hljs-keyword">mov</span> <span class="hljs-built_in">di</span>,<span class="hljs-number">160</span>*<span class="hljs-number">11</span>+<span class="hljs-number">80</span>   <span class="hljs-comment">;es:[di]，di用来存放开始的位置；</span><br> <span class="hljs-comment">;显示时间</span><br>  <span class="hljs-keyword">mov</span> <span class="hljs-number">ah</span>,<span class="hljs-string">&#x27;:&#x27;</span>         <span class="hljs-comment">;;;;;</span><br>  <br>  <span class="hljs-keyword">mov</span> <span class="hljs-built_in">al</span>,<span class="hljs-number">4</span><br>  <span class="hljs-keyword">out</span> <span class="hljs-number">70h</span>,<span class="hljs-built_in">al</span><br>  <span class="hljs-keyword">in</span> <span class="hljs-built_in">al</span>,<span class="hljs-number">71h</span><br>  <span class="hljs-comment">;取时</span><br>  <span class="hljs-keyword">call</span> display<br>  <span class="hljs-keyword">call</span> dis_maohao<br>  <span class="hljs-comment">;取分钟</span><br>  <span class="hljs-keyword">mov</span> <span class="hljs-built_in">al</span>,<span class="hljs-number">2</span><br>  <span class="hljs-keyword">out</span> <span class="hljs-number">70h</span>,<span class="hljs-built_in">al</span><br>  <span class="hljs-keyword">in</span> <span class="hljs-built_in">al</span>,<span class="hljs-number">71h</span><br>  <br>  <span class="hljs-keyword">call</span> display<br>  <span class="hljs-keyword">call</span> dis_maohao<br>  <span class="hljs-comment">;取秒</span><br>  <span class="hljs-keyword">mov</span> <span class="hljs-built_in">al</span>,<span class="hljs-number">0</span><br>  <span class="hljs-keyword">out</span> <span class="hljs-number">70h</span>,<span class="hljs-built_in">al</span><br>  <span class="hljs-keyword">in</span> <span class="hljs-built_in">al</span>,<span class="hljs-number">71h</span><br>  <br>  <span class="hljs-keyword">call</span> display<br>  <br>  <span class="hljs-comment">;显示年份与月份</span><br>  <span class="hljs-keyword">mov</span> <span class="hljs-number">ah</span>,<span class="hljs-string">&#x27;/&#x27;</span><br>  <span class="hljs-keyword">mov</span> <span class="hljs-built_in">di</span>,<span class="hljs-number">12</span>*<span class="hljs-number">160</span>+<span class="hljs-number">80</span><br>  <br>     <span class="hljs-comment">;取年份</span><br>  <span class="hljs-keyword">mov</span> <span class="hljs-built_in">al</span>,<span class="hljs-number">9</span><br>  <span class="hljs-keyword">out</span> <span class="hljs-number">70h</span>,<span class="hljs-built_in">al</span><br>  <span class="hljs-keyword">in</span> <span class="hljs-built_in">al</span>,<span class="hljs-number">71h</span><br>  <span class="hljs-keyword">call</span> display<br>  <span class="hljs-keyword">call</span> dis_maohao<br>  <span class="hljs-comment">;取月份</span><br>  <span class="hljs-keyword">mov</span> <span class="hljs-built_in">al</span>,<span class="hljs-number">8</span><br>  <span class="hljs-keyword">out</span> <span class="hljs-number">70h</span>,<span class="hljs-built_in">al</span><br>  <span class="hljs-keyword">in</span> <span class="hljs-built_in">al</span>,<span class="hljs-number">71h</span><br>  <span class="hljs-keyword">call</span> display<br>  <span class="hljs-keyword">call</span> dis_maohao  <br>  <span class="hljs-comment">;取日期</span><br>  <span class="hljs-keyword">mov</span> <span class="hljs-built_in">al</span>,<span class="hljs-number">7</span><br>  <span class="hljs-keyword">out</span> <span class="hljs-number">70h</span>,<span class="hljs-built_in">al</span><br>  <span class="hljs-keyword">in</span> <span class="hljs-built_in">al</span>,<span class="hljs-number">71h</span><br>  <span class="hljs-keyword">call</span> display<br> <span class="hljs-keyword">jmp</span> from<br> <span class="hljs-keyword">mov</span> <span class="hljs-built_in">ax</span>,<span class="hljs-number">4c00h</span><br> <span class="hljs-keyword">int</span> <span class="hljs-number">21h</span><br> <span class="hljs-comment">;子函数</span><br><span class="hljs-symbol"> display:</span><br>   <span class="hljs-keyword">push</span> <span class="hljs-built_in">ax</span><br>   <span class="hljs-keyword">mov</span> <span class="hljs-built_in">cl</span>,<span class="hljs-number">4</span><br>   <span class="hljs-keyword">shr</span> <span class="hljs-built_in">al</span>,<span class="hljs-built_in">cl</span><br>   <span class="hljs-keyword">add</span> <span class="hljs-built_in">al</span>,<span class="hljs-number">48</span><br>   <span class="hljs-keyword">call</span> display_son<br>   <span class="hljs-keyword">pop</span> <span class="hljs-built_in">ax</span><br>   <span class="hljs-keyword">and</span> <span class="hljs-built_in">al</span>,<span class="hljs-number">0fh</span><br>   <span class="hljs-keyword">add</span> <span class="hljs-built_in">al</span>,<span class="hljs-number">48</span><br>   <span class="hljs-keyword">call</span> display_son<br>  <span class="hljs-keyword">ret</span><br><span class="hljs-symbol"> display_son:</span><br>  <span class="hljs-comment">;将al中的数据显示在screen中</span><br>  <span class="hljs-keyword">mov</span> <span class="hljs-built_in">byte</span> <span class="hljs-built_in">ptr</span> <span class="hljs-built_in">es</span>:[<span class="hljs-built_in">di</span>],<span class="hljs-built_in">al</span><br>  <span class="hljs-keyword">inc</span> <span class="hljs-built_in">di</span><br>  <span class="hljs-keyword">mov</span> <span class="hljs-built_in">byte</span> <span class="hljs-built_in">ptr</span> <span class="hljs-built_in">es</span>:[<span class="hljs-built_in">di</span>],<span class="hljs-number">01000010b</span><br>  <span class="hljs-keyword">inc</span> <span class="hljs-built_in">di</span><br>  <br>  <span class="hljs-keyword">ret</span><br><span class="hljs-symbol"> dis_maohao:</span><br>  <span class="hljs-keyword">mov</span> <span class="hljs-built_in">byte</span> <span class="hljs-built_in">ptr</span> <span class="hljs-built_in">es</span>:[<span class="hljs-built_in">di</span>],<span class="hljs-number">ah</span><br>  <span class="hljs-keyword">inc</span> <span class="hljs-built_in">di</span><br>  <span class="hljs-keyword">mov</span> <span class="hljs-built_in">byte</span> <span class="hljs-built_in">ptr</span> <span class="hljs-built_in">es</span>:[<span class="hljs-built_in">di</span>],<span class="hljs-number">01000010b</span><br>  <span class="hljs-keyword">inc</span> <span class="hljs-built_in">di</span><br>  <span class="hljs-keyword">ret</span>  <br>code ends<br>end s<br><br><br><br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -420,7 +409,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" class="category-chain-item">编程语言</a>
+  <a href="/categories/%E6%8A%80%E6%9C%AF/" class="category-chain-item">技术</a>
   
   
 
@@ -436,6 +425,8 @@
       <i class="iconfont icon-tags"></i>
       
         <a href="/tags/%E6%B1%87%E7%BC%96/" class="print-no-link">#汇编</a>
+      
+        <a href="/tags/%E5%BE%AE%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" class="print-no-link">#微机组成原理</a>
       
     </div>
   
@@ -473,7 +464,7 @@
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
                   <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-by"></i>
+                    <i class="iconfont icon-cc-by"></i>
                   </span>
                 </a>
               
@@ -656,24 +647,25 @@
 
   
     
-      <span id="busuanzi_container_site_pv" style="display: none">
+      <span id="leancloud-site-pv-container" style="display: none">
         总访问量 
-        <span id="busuanzi_value_site_pv"></span>
+        <span id="leancloud-site-pv"></span>
          次
       </span>
     
     
-      <span id="busuanzi_container_site_uv" style="display: none">
+      <span id="leancloud-site-uv-container" style="display: none">
         总访客数 
-        <span id="busuanzi_value_site_uv"></span>
+        <span id="leancloud-site-uv"></span>
          人
       </span>
     
     
-  
-</div>
 
   
+
+</div>
+
   
   
 </div>
@@ -723,6 +715,33 @@
   
 
 
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
 
 
   
@@ -864,8 +883,6 @@
   <script defer src="/js/leancloud.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 

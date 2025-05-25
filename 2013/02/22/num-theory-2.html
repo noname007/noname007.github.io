@@ -98,8 +98,11 @@
 }
 </style><!-- hexo injector head_begin end -->
   <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
   <link rel="icon" href="/img/favicon.png">
+  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -107,20 +110,21 @@
   <meta name="author" content="soul11201">
   <meta name="keywords" content="">
   
-    <meta name="description" content="这两天一直再看数论方面的东西，心里也想了很多的东西，凑着现在有时间，写写也整理一下思路，学习数论的第一感觉就是东西多，乱杂，性质定理公式太别多。但是思路理清楚，就好了。在这里推荐和我一样数论刚入门的人，看陈景润写的初等数论一书，我感觉写的真不错，看完后，思路感觉非常的清晰。当然东西也特别多，东西真是一次无法看完呀，但是我感觉有很多的东西非常的有意思，比如说的数论的性质引理定理什么的第一章一次就给出">
+    <meta name="description" content="这两天一直再看数论方面的东西，心里也想了很多的东西，凑着现在有时间，写写也整理一下思路。 这几天学习数论的感觉就是内容多、乱杂，性质、定理、公式也太别多。但是思路理清楚，就好了。 在这里推荐和我一样数论刚入门的人，看陈景润写的《初等数论》一书，写的真不错，看完后，让思路清晰不少。书中内容也特别多，我是在汉王电纸书上花了几天才读完的，很多东西非常有意思。第一章一次就给讲了几十条的性质、引理、定理，要">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数论学习笔记">
 <meta property="og:url" content="http://example.com/2013/02/22/num-theory-2.html">
 <meta property="og:site_name" content="西西弗">
-<meta property="og:description" content="这两天一直再看数论方面的东西，心里也想了很多的东西，凑着现在有时间，写写也整理一下思路，学习数论的第一感觉就是东西多，乱杂，性质定理公式太别多。但是思路理清楚，就好了。在这里推荐和我一样数论刚入门的人，看陈景润写的初等数论一书，我感觉写的真不错，看完后，思路感觉非常的清晰。当然东西也特别多，东西真是一次无法看完呀，但是我感觉有很多的东西非常的有意思，比如说的数论的性质引理定理什么的第一章一次就给出">
+<meta property="og:description" content="这两天一直再看数论方面的东西，心里也想了很多的东西，凑着现在有时间，写写也整理一下思路。 这几天学习数论的感觉就是内容多、乱杂，性质、定理、公式也太别多。但是思路理清楚，就好了。 在这里推荐和我一样数论刚入门的人，看陈景润写的《初等数论》一书，写的真不错，看完后，让思路清晰不少。书中内容也特别多，我是在汉王电纸书上花了几天才读完的，很多东西非常有意思。第一章一次就给讲了几十条的性质、引理、定理，要">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2013-02-22T04:06:28.000Z">
-<meta property="article:modified_time" content="2024-07-02T14:53:12.179Z">
+<meta property="article:modified_time" content="2025-05-25T15:35:51.617Z">
 <meta property="article:author" content="soul11201">
+<meta property="article:tag" content="算法与数据结构">
+<meta property="article:tag" content="ACM 训练">
+<meta property="article:tag" content="数论">
 <meta name="twitter:card" content="summary_large_image">
   
-  
-    <meta name="referrer" content="no-referrer-when-downgrade">
   
   
   <title>数论学习笔记 - 西西弗</title>
@@ -140,7 +144,7 @@
 <!-- 主题依赖的图标库，不要自行修改 -->
 <!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
 
@@ -161,7 +165,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":120,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"yv06ESJ2J5KwPSogj0y5aqzY-MdYXbMMI","app_key":"ODnROP22iCurdpYj4tNzJtji","server_url":null,"path":"window.location.pathname","ignore_local":false},"gtag":null},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":120,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"yv06ESJ2J5KwPSogj0y5aqzY-MdYXbMMI","app_key":"ODnROP22iCurdpYj4tNzJtji","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"gtag":null,"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -170,8 +174,6 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-  
-
   
 
   
@@ -237,30 +239,6 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>归档</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
-                <i class="iconfont icon-category-fill"></i>
-                <span>分类</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
               <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
@@ -276,18 +254,6 @@
               <a class="nav-link" href="/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/links/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>友链</span>
               </a>
             </li>
           
@@ -315,7 +281,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/assets/imgs/post_cover/default.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -328,6 +294,11 @@
         
           
   <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        soul11201
+      </span>
     
     
       <span class="post-meta">
@@ -357,12 +328,21 @@
         
         
           <!-- compatible with older versions-->
-          10 分钟
+          9 分钟
         
       </span>
     
 
     
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
     
   </div>
 
@@ -396,68 +376,58 @@
           <article class="post-content mx-auto">
             <h1 id="seo-header">数论学习笔记</h1>
             
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    <!-- compatible with older versions-->
+                    本文最后更新于：2025-05-25T23:35:51+08:00
+                  
+                  
+
+                
+              </p>
+            
             
               <div class="markdown-body">
                 
-                <p>这两天一直再看数论方面的东西，心里也想了很多的东西，凑着现在有时间，写写也整理一下思路，学习数论的第一感觉就是东西多，乱杂，性质定理公式太别多。但是思路理清楚，就好了。在这里推荐和我一样数论刚入门的人，看陈景润写的初等数论一书，我感觉写的真不错，看完后，思路感觉非常的清晰。当然东西也特别多，东西真是一次无法看完呀，但是我感觉有很多的东西非常的有意思，比如说的数论的性质引理定理什么的第一章一次就给出来的有几十条的东西，要都记住真的很难，但是有几个非常有意思。还有matrix
-67大神写的一篇blog也非常的有意思，浅显易懂，在程序员杂志上也发表了名字叫跨越千年的RSA算法。</p>
-<pre><code class="hljs">    说素数， 首先从素数说起，素数真的是研究数的一个绝佳的突破口，为什么呢？根据算术基本定理一下就能想明白了吧？？？任何数都可以分解成若干个质因数的乘积的形式，而且形式是唯一的如果不考虑因数乘积位置上不同的形式问题的话。
-
-   素数第一个问题就是素数个数的问题，素数究竟是有穷多个还是无穷多个呢？欧几里德给出了一个非长漂亮的证明，假设素数有限个，设最大的素数为，P，所以素数为：2、3 、5、 7 .。。。。。。。P现在有这样一个数 S = 2*3*5*7*。。。。*P +1，既然有了算数基本定理，那么这个问题就可以简化了， 只需要找在所有的质数里面，有没有一个数是S的约数，从S的式子，可以看出S不管除以任何素数 K 都会余 1，说明S没有因数，除了它本身S和1之外，说明S为素数，且S &gt; P,但是刚才我们已经假设P为最大的素数，与假设矛盾，故素数为无限个。素数个数的问题，用反证法非常漂亮的给证明了。说完素数，因该还有一个听上去相近的概念，就是互素，互素的两个数不一定都是素数，两个合数也可能互素比如 9 和16，质数肯定是互素的。那素数的个数是怎么分布的呢？还有一个问题在1到n-1这n-1个数里面有多的数是与n互素的那？？其实第二个问题就是欧拉函数phi（n）。第一个问题其实素数定理已经解决了：</code></pre>
-<p>Pi(N)/N *LgN = 1 当N为无穷大的时候，pi（n）为&lt; N的素数的个数。</p>
+                <p>这两天一直再看数论方面的东西，心里也想了很多的东西，凑着现在有时间，写写也整理一下思路。</p>
+<p>这几天学习数论的感觉就是内容多、乱杂，性质、定理、公式也太别多。但是思路理清楚，就好了。</p>
+<p>在这里推荐和我一样数论刚入门的人，看陈景润写的《初等数论》一书，写的真不错，看完后，让思路清晰不少。书中内容也特别多，我是在汉王电纸书上花了几天才读完的，很多东西非常有意思。第一章一次就给讲了几十条的性质、引理、定理，要都记住真的很难，但是有几个非常有意思。Matrix67
+大神写的一篇 blog 也非常的有趣，浅显易懂，在程序员杂志上也发表了， <a
+target="_blank" rel="noopener" href="https://matrix67.com/blog/archives/5100">《跨越千年的RSA算法》</a>。</p>
+<p>研究数，首先要从素数研究。为什么说素数是研究数的一个绝佳的突破口呢？
+根据算术基本定理，任何数都可以分解成若干个质因数的乘积的形式，而且形式是唯一的。</p>
+<h3
+id="素数第一个问题就是素数个数的问题素数究竟是有穷多个还是无穷多个呢">素数第一个问题就是素数个数的问题，素数究竟是有穷多个还是无穷多个呢？</h3>
+<p>欧几里德 用反证法 非常漂亮的进行了证明 &gt;
+假设素数有限个，设最大的素数为，P，所以素数为：2、3 、5、 7 ... P &gt;
+现在有这样一个数 S = 2<em>3</em>5<em>7</em>...*P + 1 &gt;
+既然有了算数基本定理，那么这个问题就可以简化了，
+只需要找在所有的质数里面，有没有一个数是S的约数 &gt;
+从S的式子，可以看出S不管除以任何素数 K 都会余
+1，说明S没有因数，除了它本身S和1之外，说明S为素数，且S &gt; P &gt;
+但是刚才我们已经假设P为最大的素数，与假设矛盾，故素数为无限个。</p>
+<p>说完素数，还有一个听上去相近的概念，就是互素，互素的两个数不一定都是素数，两个合数也可能互素比如
+9 和16，质数肯定是互素的。</p>
+<ul>
+<li>那素数的个数是怎么分布的呢？</li>
+<li>还有一个问题在1到n-1，这n-1个数里面有多的数是与n互素的？？</li>
+</ul>
+<p>其实第二个问题就是欧拉函数phi（n）。</p>
+<p>第一个问题其实素数定理已经解决了： Pi(N)/N *LgN = 1
+当N为无穷大的时候，pi（n）为&lt; N的素数的个数。</p>
 <p>第二个问题其，人已经给出来了，怎么求？</p>
-<pre><code class="hljs">首先设n = P1^Q1*P2*Q2**。。。。*Pk^Qk.那么phi（n） = n(1-1/P1)(1-1/P2)******(1-1/Pk),，然后把每一项的1 移到分子上去  然后把n乘进去就得到了。
+<pre><code class="hljs">首先设 n = P1^Q1*P2*Q2**。。。。*Pk^Qk.那么phi（n） = n(1-1/P1)(1-1/P2)******(1-1/Pk),，然后把每一项的1 移到分子上去  然后把n乘进去就得到了。
  
 phi(n) = (P1^n-P1^(n-1))*(P^2^n-P2^(n-1))*。。。。。(Pk^n-Pk^(n-1))
  
 = P1^（n-1）(P1-1)*P2^（n-1）(P2-1)*.......*Pk^（n-1）(Pk-1)。</code></pre>
 <p>然后计算机j就能很快的算出来phi（n）了。算phi(n)的时间复杂度大概为Ln(n)级别的。</p>
-<pre><code class="hljs">int  Eu(int n)&#123; int ans = 1; 
-    for(int i = 2; i * i &lt;= n;++i)&#123;  
-        if(!(n%i))&#123;  
-            ans *= i - 1;  
-            n /= i;  
-            while(!(n%i))&#123;  
-                ans *= i;n/=i;   
-            &#125;   
-        &#125;  
-    &#125;  
-    if(n &gt; 1)&#123;  
-        ans *= n -1;  
-    &#125;  
-    return ans;  
-&#125;  </code></pre>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span>  <span class="hljs-title function_">Eu</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span>&#123; <span class="hljs-type">int</span> ans = <span class="hljs-number">1</span>; <br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">2</span>; i * i &lt;= n;++i)&#123;  <br>        <span class="hljs-keyword">if</span>(!(n%i))&#123;  <br>            ans *= i - <span class="hljs-number">1</span>;  <br>            n /= i;  <br>            <span class="hljs-keyword">while</span>(!(n%i))&#123;  <br>                ans *= i;n/=i;   <br>            &#125;   <br>        &#125;  <br>    &#125;  <br>    <span class="hljs-keyword">if</span>(n &gt; <span class="hljs-number">1</span>)&#123;  <br>        ans *= n <span class="hljs-number">-1</span>;  <br>    &#125;  <br>    <span class="hljs-keyword">return</span> ans;  <br>&#125;  <br></code></pre></td></tr></table></figure>
 <p>但是当算 从 1
 到N之间所有数的欧拉函数的时候这个时候就可能会出现TLE了，但是有改进的办法，就是用线性筛选素数的方法，在里面家几句话，就可以成为线性筛选欧拉函数了。呵呵。</p>
-<pre><code class="hljs">int phi[3000010];  
-int prime[3000010],prime_top = 0;  
-int not_prime[3000010];   
-//算 2 到3000000的所有数的欧拉函数。   
-void build_phi()&#123;  
-    memset(not_prime,0,sizeof(not_prime));  
-      
-    for(int i = 2;i &lt; 3000010;++i)&#123;  
-        if(!not_prime[i])&#123;  
-            prime[prime_top++] = i;  
-            phi[i] = i - 1;  
-        &#125;  
-        for(int j = 0;j&lt;prime_top&amp;&amp;i*prime[j]&lt;3000010;++j)&#123;  
-            not_prime[i*prime[j]] = 1;  
-            //找到第一个能被 i整除的此次筛选结束进行下一次。   
-            if(i%prime[j] == 0)&#123;  
-                phi[i*prime[j]] = prime[j] * phi[i];  
-                break;  
-            &#125;else&#123;  
-                phi[i*prime[j]] = phi[i] *(prime[j] - 1);  
-            &#125;  
-        &#125;  
-    &#125;  
-&#125;  
-
-
-
-
- 2、由欧几里德算法，衍生出来一个重要的贝祖等式：两数的最大公约数可以用两数的整数倍相加来表示</code></pre>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> phi[<span class="hljs-number">3000010</span>];  <br><span class="hljs-type">int</span> prime[<span class="hljs-number">3000010</span>],prime_top = <span class="hljs-number">0</span>;  <br><span class="hljs-type">int</span> not_prime[<span class="hljs-number">3000010</span>];   <br><span class="hljs-comment">//算 2 到3000000的所有数的欧拉函数。   </span><br><span class="hljs-type">void</span> <span class="hljs-title function_">build_phi</span><span class="hljs-params">()</span>&#123;  <br>    <span class="hljs-built_in">memset</span>(not_prime,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(not_prime));  <br>      <br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">2</span>;i &lt; <span class="hljs-number">3000010</span>;++i)&#123;  <br>        <span class="hljs-keyword">if</span>(!not_prime[i])&#123;  <br>            prime[prime_top++] = i;  <br>            phi[i] = i - <span class="hljs-number">1</span>;  <br>        &#125;  <br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>;j&lt;prime_top&amp;&amp;i*prime[j]&lt;<span class="hljs-number">3000010</span>;++j)&#123;  <br>            not_prime[i*prime[j]] = <span class="hljs-number">1</span>;  <br>            <span class="hljs-comment">//找到第一个能被 i整除的此次筛选结束进行下一次。   </span><br>            <span class="hljs-keyword">if</span>(i%prime[j] == <span class="hljs-number">0</span>)&#123;  <br>                phi[i*prime[j]] = prime[j] * phi[i];  <br>                <span class="hljs-keyword">break</span>;  <br>            &#125;<span class="hljs-keyword">else</span>&#123;  <br>                phi[i*prime[j]] = phi[i] *(prime[j] - <span class="hljs-number">1</span>);  <br>            &#125;  <br>        &#125;  <br>    &#125;  <br>&#125;  <br></code></pre></td></tr></table></figure>
+<pre><code class="hljs"> 2、由欧几里德算法，衍生出来一个重要的贝祖等式：两数的最大公约数可以用两数的整数倍相加来表示</code></pre>
 
                 
               </div>
@@ -487,6 +457,17 @@ void build_phi()&#123;
 
     </div>
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="print-no-link">#算法与数据结构</a>
+      
+        <a href="/tags/ACM-%E8%AE%AD%E7%BB%83/" class="print-no-link">#ACM 训练</a>
+      
+        <a href="/tags/%E6%95%B0%E8%AE%BA/" class="print-no-link">#数论</a>
+      
+    </div>
   
 </div>
 
@@ -522,7 +503,7 @@ void build_phi()&#123;
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
                   <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-by"></i>
+                    <i class="iconfont icon-cc-by"></i>
                   </span>
                 </a>
               
@@ -705,24 +686,25 @@ void build_phi()&#123;
 
   
     
-      <span id="busuanzi_container_site_pv" style="display: none">
+      <span id="leancloud-site-pv-container" style="display: none">
         总访问量 
-        <span id="busuanzi_value_site_pv"></span>
+        <span id="leancloud-site-pv"></span>
          次
       </span>
     
     
-      <span id="busuanzi_container_site_uv" style="display: none">
+      <span id="leancloud-site-uv-container" style="display: none">
         总访客数 
-        <span id="busuanzi_value_site_uv"></span>
+        <span id="leancloud-site-uv"></span>
          人
       </span>
     
     
-  
-</div>
 
   
+
+</div>
+
   
   
 </div>
@@ -772,6 +754,33 @@ void build_phi()&#123;
   
 
 
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
 
 
   
@@ -913,8 +922,6 @@ void build_phi()&#123;
   <script defer src="/js/leancloud.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 

@@ -98,8 +98,11 @@
 }
 </style><!-- hexo injector head_begin end -->
   <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
   <link rel="icon" href="/img/favicon.png">
+  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -114,17 +117,15 @@
 <meta property="og:site_name" content="西西弗">
 <meta property="og:description" content="杨振振  原创作品转载请注明出处  《Linux内核分析》MOOC课程 http:&#x2F;&#x2F;www.xuetangx.com&#x2F;courses&#x2F;course-v1:ustcX+USTC001+_&#x2F;about">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/imgs/cpu-arch.jpg">
-<meta property="og:image" content="http://example.com/imgs/stack-asm.png">
+<meta property="og:image" content="http://example.com/assets/imgs/cpu-arch.jpg">
+<meta property="og:image" content="http://example.com/assets/imgs/stack-asm.png">
 <meta property="article:published_time" content="2016-02-23T23:55:28.000Z">
-<meta property="article:modified_time" content="2024-07-01T10:23:31.778Z">
+<meta property="article:modified_time" content="2025-05-25T17:05:30.944Z">
 <meta property="article:author" content="soul11201">
 <meta property="article:tag" content="Linux 内核分析">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/imgs/cpu-arch.jpg">
+<meta name="twitter:image" content="http://example.com/assets/imgs/cpu-arch.jpg">
   
-  
-    <meta name="referrer" content="no-referrer-when-downgrade">
   
   
   <title>Linux 内核分析 -- C函数调用栈机制在汇编中的实现 - 西西弗</title>
@@ -144,7 +145,7 @@
 <!-- 主题依赖的图标库，不要自行修改 -->
 <!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
 
@@ -165,7 +166,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":120,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"yv06ESJ2J5KwPSogj0y5aqzY-MdYXbMMI","app_key":"ODnROP22iCurdpYj4tNzJtji","server_url":null,"path":"window.location.pathname","ignore_local":false},"gtag":null},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":120,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"yv06ESJ2J5KwPSogj0y5aqzY-MdYXbMMI","app_key":"ODnROP22iCurdpYj4tNzJtji","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"gtag":null,"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -174,8 +175,6 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-  
-
   
 
   
@@ -241,30 +240,6 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>归档</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
-                <i class="iconfont icon-category-fill"></i>
-                <span>分类</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
               <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
@@ -280,18 +255,6 @@
               <a class="nav-link" href="/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/links/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>友链</span>
               </a>
             </li>
           
@@ -319,7 +282,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/assets/imgs/post_cover/default.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -332,6 +295,11 @@
         
           
   <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        soul11201
+      </span>
     
     
       <span class="post-meta">
@@ -368,6 +336,15 @@
 
     
     
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
+    
   </div>
 
 
@@ -400,6 +377,17 @@
           <article class="post-content mx-auto">
             <h1 id="seo-header">Linux 内核分析 -- C函数调用栈机制在汇编中的实现</h1>
             
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    <!-- compatible with older versions-->
+                    本文最后更新于：2025-05-26T01:05:30+08:00
+                  
+                  
+
+                
+              </p>
+            
             
               <div class="markdown-body">
                 
@@ -407,7 +395,7 @@
 <p>平时可能见到movb,movw,movl等一些指令，三条指令的意思基本一样，不一样的地方在于，操作的数据是1个字节(1B)，1个字(2B)，1个双字（4B）。</p>
 <h2 id="基础知识">基础知识</h2>
 <p>汇编语言简单的可以认为是机器语言的一种便记符号，理解体系结构对理解汇编指令集大有裨益。现在的流行计算机体系结构是冯诺依曼体系也即存储程序体系。其结构大致如下:</p>
-<p><img src="/imgs/cpu-arch.jpg" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="/assets/imgs/cpu-arch.jpg" srcset="/img/loading.gif" lazyload /></p>
 <p>也决定了指令集设计基本上都是围绕着cpu、存储进行设计的，对于汇编的语法格式，Intel和AT&amp;T汇编之间的区别看以参考文档
 <a target="_blank" rel="noopener" href="http://www.ibm.com/developerworks/cn/linux/l-assembly/">Linux
 汇编语言开发指南</a>,这里简要的说一下本文代码中用到的AT&amp;T
@@ -456,7 +444,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs gas">_g:<br>    pushl   %ebp<br>    movl    %esp, %ebp<br>    movl    $4, %eax<br>    popl    %ebp<br>    ret<br>_f:<br>    pushl   %ebp<br>    movl    %esp, %ebp<br>    call    _g<br>    addl    $2, %eax<br>    popl    %ebp<br>    ret<br>_main:<br>    pushl   %ebp<br>    movl    %esp, %ebp<br>    call    _f<br>    addl    $1, %eax<br>    leave<br>    ret<br></code></pre></td></tr></table></figure>
 <p>俗话说射人先射马，擒贼先擒王，看上面这坨代码，如果不知道模型是什么确实挺费劲，下面就个人理解说一下这个模型。比如说我们把64KB这么大内存空间分配给<code>_f</code>使用，初始化的时候，EBP，ESP所指向如图所示的上一个函数的栈基址和栈顶地址。当在f中执行完下面的指令后，ESP,EBP位置如下图所示：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs gas">pushl   %ebp<br>movl    %esp, %ebp<br></code></pre></td></tr></table></figure>
-<p><img src="/imgs/stack-asm.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="/assets/imgs/stack-asm.png" srcset="/img/loading.gif" lazyload /></p>
 <p>从图中也就看到，当前函数使用的栈内存为[ESP,EBP)（不是固定的哦，因为，ESP会变化）这段内存空间（它俩指向同一个位置说明函数栈还没有使用），另外[EBP,EBP+4)这段内存空间保存的是调用此函数的函数栈基址。
 在到<code>popl    %ebp</code>这条指令之间没有单向操作栈的指令，故可以略去不用考虑，直接看这条指令，此时已经是函数调用完毕，此函数中保存的调用此函数的函数栈机制恢复到ebp寄存器中，到此函数调用栈的建立与销毁已经完毕。再看_g的代码，就会发现同样也是利用这个模型机制，到此内存中程序的函数调用栈机制的整体模型浮现在了面前。至于参数怎么传的，返回值怎么保存的，简单的说在栈和ax寄存器或者内存中，后面再详细说。</p>
 
@@ -477,15 +465,8 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%86%85%E5%B9%95/" class="category-chain-item">技术内幕</a>
+  <a href="/categories/%E6%8A%80%E6%9C%AF/" class="category-chain-item">技术</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%86%85%E5%B9%95/Linux-%E5%86%85%E6%A0%B8%E5%88%86%E6%9E%90/" class="category-chain-item">Linux 内核分析</a>
-  
-  
-
   
 
       </span>
@@ -537,7 +518,7 @@
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
                   <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-by"></i>
+                    <i class="iconfont icon-cc-by"></i>
                   </span>
                 </a>
               
@@ -720,24 +701,25 @@
 
   
     
-      <span id="busuanzi_container_site_pv" style="display: none">
+      <span id="leancloud-site-pv-container" style="display: none">
         总访问量 
-        <span id="busuanzi_value_site_pv"></span>
+        <span id="leancloud-site-pv"></span>
          次
       </span>
     
     
-      <span id="busuanzi_container_site_uv" style="display: none">
+      <span id="leancloud-site-uv-container" style="display: none">
         总访客数 
-        <span id="busuanzi_value_site_uv"></span>
+        <span id="leancloud-site-uv"></span>
          人
       </span>
     
     
-  
-</div>
 
   
+
+</div>
+
   
   
 </div>
@@ -787,6 +769,33 @@
   
 
 
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
 
 
   
@@ -928,8 +937,6 @@
   <script defer src="/js/leancloud.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 

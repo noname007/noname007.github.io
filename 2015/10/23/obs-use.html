@@ -98,8 +98,11 @@
 }
 </style><!-- hexo injector head_begin end -->
   <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
   <link rel="icon" href="/img/favicon.png">
+  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -114,17 +117,16 @@
 <meta property="og:site_name" content="西西弗">
 <meta property="og:description" content="obs 是什么 官网标题有这么一句话，  Free, open source software for live streaming and recording  简单来说就是一个视频直播推流器，并且还能同时录制视频。作为推流器还有一些非常有意思的功能。例如，调节推送的比特率，对视频做一些简单的处理往视频中插入文字、图像，从摄像机等外设设备中捕获音视频,捕获窗口等功能。 最重要的是这些功能组合的方">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/imgs/obs-use.png">
-<meta property="og:image" content="http://example.com/imgs/obs-1.png">
+<meta property="og:image" content="http://example.com/assets/imgs/obs-use.png">
+<meta property="og:image" content="http://example.com/assets/imgs/obs-1.png">
 <meta property="article:published_time" content="2015-10-23T08:55:27.000Z">
-<meta property="article:modified_time" content="2024-06-17T15:23:49.058Z">
+<meta property="article:modified_time" content="2025-05-25T17:01:08.415Z">
 <meta property="article:author" content="soul11201">
 <meta property="article:tag" content="音视频">
+<meta property="article:tag" content="软件工具">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/imgs/obs-use.png">
+<meta name="twitter:image" content="http://example.com/assets/imgs/obs-use.png">
   
-  
-    <meta name="referrer" content="no-referrer-when-downgrade">
   
   
   <title>obs简单使用 - 西西弗</title>
@@ -144,7 +146,7 @@
 <!-- 主题依赖的图标库，不要自行修改 -->
 <!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
 
@@ -165,7 +167,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":120,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"yv06ESJ2J5KwPSogj0y5aqzY-MdYXbMMI","app_key":"ODnROP22iCurdpYj4tNzJtji","server_url":null,"path":"window.location.pathname","ignore_local":false},"gtag":null},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":120,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"yv06ESJ2J5KwPSogj0y5aqzY-MdYXbMMI","app_key":"ODnROP22iCurdpYj4tNzJtji","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"gtag":null,"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -174,8 +176,6 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-  
-
   
 
   
@@ -241,30 +241,6 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>归档</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
-                <i class="iconfont icon-category-fill"></i>
-                <span>分类</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
               <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
@@ -280,18 +256,6 @@
               <a class="nav-link" href="/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/links/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>友链</span>
               </a>
             </li>
           
@@ -319,7 +283,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/assets/imgs/post_cover/default.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -332,6 +296,11 @@
         
           
   <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        soul11201
+      </span>
     
     
       <span class="post-meta">
@@ -368,6 +337,15 @@
 
     
     
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
+    
   </div>
 
 
@@ -400,6 +378,17 @@
           <article class="post-content mx-auto">
             <h1 id="seo-header">obs简单使用</h1>
             
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    <!-- compatible with older versions-->
+                    本文最后更新于：2025-05-26T01:01:08+08:00
+                  
+                  
+
+                
+              </p>
+            
             
               <div class="markdown-body">
                 
@@ -410,11 +399,11 @@
 </blockquote>
 <p>简单来说就是一个视频直播推流器，并且还能同时录制视频。作为推流器还有一些非常有意思的功能。例如，调节推送的比特率，对视频做一些简单的处理往视频中插入文字、图像，从摄像机等外设设备中捕获音视频,捕获窗口等功能。
 最重要的是这些功能组合的方式基本没有限制。</p>
-<p><img src="/imgs/obs-use.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="/assets/imgs/obs-use.png" srcset="/img/loading.gif" lazyload /></p>
 <h2 id="测试视频直播的时间延迟">测试视频直播的时间延迟</h2>
 <p>视频直播测试的时候需要简单的测试一下视频的延迟时间。怎么测试呢？</p>
 <p>其实最简单的方法就是查看视频播放到什么时间点了，客户端和obs的一对比就知道延迟了，可惜obs不显示，只能更换其他方式。利用obs的窗口捕获功能，把浏览器窗口和媒体源内容拼合到一起，浏览器中的时间就可以起到一个时间基准的作用，对比视频中和实际中浏览器的时间就可以得出时间延迟。</p>
-<p><img src="/imgs/obs-1.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="/assets/imgs/obs-1.png" srcset="/img/loading.gif" lazyload /></p>
 <h2 id="一个简单的推送流程">一个简单的推送流程</h2>
 <ul>
 <li>打开软件</li>
@@ -443,6 +432,8 @@ src="https://raw.githubusercontent.com/noname007/assets/master/obs-use.gif" srcs
       <i class="iconfont icon-tags"></i>
       
         <a href="/tags/%E9%9F%B3%E8%A7%86%E9%A2%91/" class="print-no-link">#音视频</a>
+      
+        <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/" class="print-no-link">#软件工具</a>
       
     </div>
   
@@ -480,7 +471,7 @@ src="https://raw.githubusercontent.com/noname007/assets/master/obs-use.gif" srcs
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
                   <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-by"></i>
+                    <i class="iconfont icon-cc-by"></i>
                   </span>
                 </a>
               
@@ -509,8 +500,8 @@ src="https://raw.githubusercontent.com/noname007/assets/master/obs-use.gif" srcs
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2015/10/13/c-incldue.html" title="c incldue 文件包含">
-                        <span class="hidden-mobile">c incldue 文件包含</span>
+                      <a href="/2015/10/14/linux-net-programming-dig.html" title="Linux 高性能服务器编程">
+                        <span class="hidden-mobile">Linux 高性能服务器编程</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -663,24 +654,25 @@ src="https://raw.githubusercontent.com/noname007/assets/master/obs-use.gif" srcs
 
   
     
-      <span id="busuanzi_container_site_pv" style="display: none">
+      <span id="leancloud-site-pv-container" style="display: none">
         总访问量 
-        <span id="busuanzi_value_site_pv"></span>
+        <span id="leancloud-site-pv"></span>
          次
       </span>
     
     
-      <span id="busuanzi_container_site_uv" style="display: none">
+      <span id="leancloud-site-uv-container" style="display: none">
         总访客数 
-        <span id="busuanzi_value_site_uv"></span>
+        <span id="leancloud-site-uv"></span>
          人
       </span>
     
     
-  
-</div>
 
   
+
+</div>
+
   
   
 </div>
@@ -730,6 +722,33 @@ src="https://raw.githubusercontent.com/noname007/assets/master/obs-use.gif" srcs
   
 
 
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
 
 
   
@@ -871,8 +890,6 @@ src="https://raw.githubusercontent.com/noname007/assets/master/obs-use.gif" srcs
   <script defer src="/js/leancloud.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 

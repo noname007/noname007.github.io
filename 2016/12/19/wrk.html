@@ -98,8 +98,11 @@
 }
 </style><!-- hexo injector head_begin end -->
   <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
   <link rel="icon" href="/img/favicon.png">
+  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -115,13 +118,12 @@
 <meta property="og:description" content="what wrk 的实现使用了多线程和事件机制，使其在一台多核的cpu上也能跑出很好的测试效果。在请求的生成，响应的处理，自定义测试报告的生成的时候，能嵌入lua脚本（luajit）做一些操作，比如，当使用POST传递数据的时候就需要用到lua脚本将数据填入。 usage 可以使用的参数不多，但是足以完成需求。 12345678910111213141516$ .&#x2F;wrkUsage: wrk &amp;l">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2016-12-19T06:57:27.000Z">
-<meta property="article:modified_time" content="2024-07-02T14:41:29.122Z">
+<meta property="article:modified_time" content="2025-05-25T13:32:43.463Z">
 <meta property="article:author" content="soul11201">
 <meta property="article:tag" content="Linux">
+<meta property="article:tag" content="软件工具">
 <meta name="twitter:card" content="summary_large_image">
   
-  
-    <meta name="referrer" content="no-referrer-when-downgrade">
   
   
   <title>wrk 使用 - 西西弗</title>
@@ -141,7 +143,7 @@
 <!-- 主题依赖的图标库，不要自行修改 -->
 <!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
 
@@ -162,7 +164,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":120,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"yv06ESJ2J5KwPSogj0y5aqzY-MdYXbMMI","app_key":"ODnROP22iCurdpYj4tNzJtji","server_url":null,"path":"window.location.pathname","ignore_local":false},"gtag":null},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":120,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"yv06ESJ2J5KwPSogj0y5aqzY-MdYXbMMI","app_key":"ODnROP22iCurdpYj4tNzJtji","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"gtag":null,"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -171,8 +173,6 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-  
-
   
 
   
@@ -238,30 +238,6 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>归档</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
-                <i class="iconfont icon-category-fill"></i>
-                <span>分类</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
               <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
@@ -277,18 +253,6 @@
               <a class="nav-link" href="/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/links/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>友链</span>
               </a>
             </li>
           
@@ -316,7 +280,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/assets/imgs/post_cover/default.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -329,6 +293,11 @@
         
           
   <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        soul11201
+      </span>
     
     
       <span class="post-meta">
@@ -365,6 +334,15 @@
 
     
     
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
+    
   </div>
 
 
@@ -397,6 +375,17 @@
           <article class="post-content mx-auto">
             <h1 id="seo-header">wrk 使用</h1>
             
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    <!-- compatible with older versions-->
+                    本文最后更新于：2025-05-25T21:32:43+08:00
+                  
+                  
+
+                
+              </p>
+            
             
               <div class="markdown-body">
                 
@@ -405,7 +394,7 @@
 的实现使用了多线程和事件机制，使其在一台多核的cpu上也能跑出很好的测试效果。在请求的生成，响应的处理，自定义测试报告的生成的时候，能嵌入lua脚本（luajit）做一些操作，比如，当使用POST传递数据的时候就需要用到lua脚本将数据填入。</p>
 <h2 id="usage">usage</h2>
 <p>可以使用的参数不多，但是足以完成需求。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs sh"><br>$ ./wrk<br>Usage: wrk &lt;options&gt; &lt;url&gt;<br>  Options:<br>    -c, --connections &lt;N&gt;  Connections to keep open<br>    -d, --duration    &lt;T&gt;  Duration of <span class="hljs-built_in">test</span><br>    -t, --threads     &lt;N&gt;  Number of threads to use<br><br>    -s, --script      &lt;S&gt;  Load Lua script file<br>    -H, --header      &lt;H&gt;  Add header to request<br>        --latency          Print latency statistics<br>        --<span class="hljs-built_in">timeout</span>     &lt;T&gt;  Socket/request <span class="hljs-built_in">timeout</span><br>    -v, --version          Print version details<br><br>  Numeric arguments may include a SI unit (1k, 1M, 1G)<br>  Time arguments may include a time unit (2s, 2m, 2h)<br></code></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs sh"><br>$ ./wrk<br>Usage: wrk &lt;options&gt; &lt;url&gt;<br>  Options:<br>    -c, --connections &lt;N&gt;  Connections to keep open<br>    -d, --duration    &lt;T&gt;  Duration of <span class="hljs-built_in">test</span><br>    -t, --threads     &lt;N&gt;  Number of threads to use<br><br>    -s, --script      &lt;S&gt;  Load Lua script file<br>    -H, --header      &lt;H&gt;  Add header to request<br>        --latency          Print latency statistics<br>        --<span class="hljs-built_in">timeout</span>     &lt;T&gt;  Socket/request <span class="hljs-built_in">timeout</span><br>    -v, --version          Print version details<br><br>  Numeric arguments may include a SI unit (1k, 1M, 1G)<br>  Time arguments may include a <span class="hljs-keyword">time</span> unit (2s, 2m, 2h)<br></code></pre></td></tr></table></figure>
 <pre><code class="hljs">wrk -t12 -c400 -d30s http://127.0.0.1:8080/index.html</code></pre>
 <p>这个例子表示，<code>用12 个线程 保持打开400个连接，持续30s</code></p>
 <h2 id="docker">docker</h2>
@@ -431,7 +420,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD/" class="category-chain-item">研发效能</a>
+  <a href="/categories/%E6%8A%80%E6%9C%AF/" class="category-chain-item">技术</a>
   
   
 
@@ -447,6 +436,8 @@
       <i class="iconfont icon-tags"></i>
       
         <a href="/tags/Linux/" class="print-no-link">#Linux</a>
+      
+        <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/" class="print-no-link">#软件工具</a>
       
     </div>
   
@@ -484,7 +475,7 @@
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
                   <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-by"></i>
+                    <i class="iconfont icon-cc-by"></i>
                   </span>
                 </a>
               
@@ -513,8 +504,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2016/12/15/unbuntu-in-win10.html" title="Window 10 中安装Ubuntu">
-                        <span class="hidden-mobile">Window 10 中安装Ubuntu</span>
+                      <a href="/2016/12/15/unbuntu-in-win10.html" title="Window 10 中安装 Ubuntu">
+                        <span class="hidden-mobile">Window 10 中安装 Ubuntu</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -667,24 +658,25 @@
 
   
     
-      <span id="busuanzi_container_site_pv" style="display: none">
+      <span id="leancloud-site-pv-container" style="display: none">
         总访问量 
-        <span id="busuanzi_value_site_pv"></span>
+        <span id="leancloud-site-pv"></span>
          次
       </span>
     
     
-      <span id="busuanzi_container_site_uv" style="display: none">
+      <span id="leancloud-site-uv-container" style="display: none">
         总访客数 
-        <span id="busuanzi_value_site_uv"></span>
+        <span id="leancloud-site-uv"></span>
          人
       </span>
     
     
-  
-</div>
 
   
+
+</div>
+
   
   
 </div>
@@ -734,6 +726,33 @@
   
 
 
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
 
 
   
@@ -875,8 +894,6 @@
   <script defer src="/js/leancloud.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 

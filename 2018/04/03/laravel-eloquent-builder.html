@@ -98,8 +98,11 @@
 }
 </style><!-- hexo injector head_begin end -->
   <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
   <link rel="icon" href="/img/favicon.png">
+  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -115,13 +118,12 @@
 <meta property="og:description" content="为什么要使用 Query Builder Query builder的最大好处就是，对于SQL的 select from where join group by order by limit offset having on等关键字都转换为了类的方法，简化了SQL的使用成本，大大简化了代码量，原先一些操作数据库相关的一次性的servicelogic相关的函数，可以替换为直接 Builder 操作数">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-04-03T12:10:37.000Z">
-<meta property="article:modified_time" content="2024-07-01T08:50:13.272Z">
+<meta property="article:modified_time" content="2025-05-25T13:57:47.973Z">
 <meta property="article:author" content="soul11201">
 <meta property="article:tag" content="PHP">
+<meta property="article:tag" content="Laravel">
 <meta name="twitter:card" content="summary_large_image">
   
-  
-    <meta name="referrer" content="no-referrer-when-downgrade">
   
   
   <title>Laravel Eloquent Builder 的使用、源码简单分析总结 - 西西弗</title>
@@ -141,7 +143,7 @@
 <!-- 主题依赖的图标库，不要自行修改 -->
 <!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
 
@@ -162,7 +164,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":120,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"yv06ESJ2J5KwPSogj0y5aqzY-MdYXbMMI","app_key":"ODnROP22iCurdpYj4tNzJtji","server_url":null,"path":"window.location.pathname","ignore_local":false},"gtag":null},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":120,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"yv06ESJ2J5KwPSogj0y5aqzY-MdYXbMMI","app_key":"ODnROP22iCurdpYj4tNzJtji","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"gtag":null,"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -171,8 +173,6 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-  
-
   
 
   
@@ -238,30 +238,6 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>归档</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
-                <i class="iconfont icon-category-fill"></i>
-                <span>分类</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
               <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
@@ -277,18 +253,6 @@
               <a class="nav-link" href="/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/links/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>友链</span>
               </a>
             </li>
           
@@ -316,7 +280,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/assets/imgs/post_cover/default.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -329,6 +293,11 @@
         
           
   <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        soul11201
+      </span>
     
     
       <span class="post-meta">
@@ -365,6 +334,15 @@
 
     
     
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
+    
   </div>
 
 
@@ -397,6 +375,17 @@
           <article class="post-content mx-auto">
             <h1 id="seo-header">Laravel Eloquent Builder 的使用、源码简单分析总结</h1>
             
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    <!-- compatible with older versions-->
+                    本文最后更新于：2025-05-25T21:57:47+08:00
+                  
+                  
+
+                
+              </p>
+            
             
               <div class="markdown-body">
                 
@@ -416,7 +405,7 @@ href="notes/2018/03/22/comment-summary.html">对评论系统设计的一点总�
 Eloquent Builder的一些用法。</p>
 <p>首先用下面的 MySQL
 语句创建存储评论的数据库表，并生成Laravel对应的Model，用于检索数据库中的数据。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> `Comment` (<br>  `id` <span class="hljs-type">int</span>(<span class="hljs-number">11</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> AUTO_INCREMENT COMMENT <span class="hljs-string">&#x27;主键,评论id&#x27;</span>,<br>  `replied_id` <span class="hljs-type">int</span>(<span class="hljs-number">11</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-string">&#x27;0&#x27;</span> COMMENT <span class="hljs-string">&#x27;被评论id&#x27;</span>,<br>  `replied_root_id` <span class="hljs-type">int</span>(<span class="hljs-number">11</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-string">&#x27;0&#x27;</span> COMMENT <span class="hljs-string">&#x27;直接评论id&#x27;</span>,<br>  `content` text COMMENT <span class="hljs-string">&#x27;评论内容&#x27;</span>,<br>  `status` <span class="hljs-type">int</span>(<span class="hljs-number">11</span>) <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span> <span class="hljs-string">&#x27;评论状态&#x27;</span>,<br>  `from_user_id` <span class="hljs-type">int</span>(<span class="hljs-number">11</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-string">&#x27;0&#x27;</span> COMMENT <span class="hljs-string">&#x27;评论人id&#x27;</span>,<br>  `from_user_name` <span class="hljs-type">varchar</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-string">&#x27;&#x27;</span> COMMENT <span class="hljs-string">&#x27;评论人姓名&#x27;</span>,<br>  `to_user_id` <span class="hljs-type">int</span>(<span class="hljs-number">11</span>) <span class="hljs-keyword">DEFAULT</span> <span class="hljs-string">&#x27;0&#x27;</span> COMMENT <span class="hljs-string">&#x27;被评论人id&#x27;</span>,<br>  `to_user_name` <span class="hljs-type">varchar</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-string">&#x27;&#x27;</span> COMMENT <span class="hljs-string">&#x27;被评论人姓名&#x27;</span>,<br>  `create_at` <span class="hljs-type">timestamp</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-built_in">CURRENT_TIMESTAMP</span> <span class="hljs-string">&#x27;创建时间&#x27;</span>,<br>  <span class="hljs-keyword">PRIMARY</span> KEY (`id`)<br>) ENGINE<span class="hljs-operator">=</span>InnoDB <span class="hljs-keyword">DEFAULT</span> CHARSET<span class="hljs-operator">=</span>utf8<br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE TABLE</span> `Comment` (<br>  `id` <span class="hljs-type">int</span>(<span class="hljs-number">11</span>) <span class="hljs-keyword">NOT NULL</span> AUTO_INCREMENT COMMENT <span class="hljs-string">&#x27;主键,评论id&#x27;</span>,<br>  `replied_id` <span class="hljs-type">int</span>(<span class="hljs-number">11</span>) <span class="hljs-keyword">NOT NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-string">&#x27;0&#x27;</span> COMMENT <span class="hljs-string">&#x27;被评论id&#x27;</span>,<br>  `replied_root_id` <span class="hljs-type">int</span>(<span class="hljs-number">11</span>) <span class="hljs-keyword">NOT NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-string">&#x27;0&#x27;</span> COMMENT <span class="hljs-string">&#x27;直接评论id&#x27;</span>,<br>  `content` text COMMENT <span class="hljs-string">&#x27;评论内容&#x27;</span>,<br>  `status` <span class="hljs-type">int</span>(<span class="hljs-number">11</span>) <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span> <span class="hljs-string">&#x27;评论状态&#x27;</span>,<br>  `from_user_id` <span class="hljs-type">int</span>(<span class="hljs-number">11</span>) <span class="hljs-keyword">NOT NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-string">&#x27;0&#x27;</span> COMMENT <span class="hljs-string">&#x27;评论人id&#x27;</span>,<br>  `from_user_name` <span class="hljs-type">varchar</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">NOT NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-string">&#x27;&#x27;</span> COMMENT <span class="hljs-string">&#x27;评论人姓名&#x27;</span>,<br>  `to_user_id` <span class="hljs-type">int</span>(<span class="hljs-number">11</span>) <span class="hljs-keyword">DEFAULT</span> <span class="hljs-string">&#x27;0&#x27;</span> COMMENT <span class="hljs-string">&#x27;被评论人id&#x27;</span>,<br>  `to_user_name` <span class="hljs-type">varchar</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">NOT NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-string">&#x27;&#x27;</span> COMMENT <span class="hljs-string">&#x27;被评论人姓名&#x27;</span>,<br>  `create_at` <span class="hljs-type">timestamp</span> <span class="hljs-keyword">NOT NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-built_in">CURRENT_TIMESTAMP</span> <span class="hljs-string">&#x27;创建时间&#x27;</span>,<br>  <span class="hljs-keyword">PRIMARY KEY</span> (`id`)<br>) ENGINE<span class="hljs-operator">=</span>InnoDB <span class="hljs-keyword">DEFAULT</span> CHARSET<span class="hljs-operator">=</span>utf8<br></code></pre></td></tr></table></figure>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Created by PhpStorm.</span><br><span class="hljs-comment"> * User: yangzhen</span><br><span class="hljs-comment"> * Date: 2018/4/3</span><br><span class="hljs-comment"> * Time: 20:26</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-keyword">namespace</span> <span class="hljs-title class_">App</span>\<span class="hljs-title class_">Model</span>;<br><br><br><span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Database</span>\<span class="hljs-title">Eloquent</span>\<span class="hljs-title">Model</span>;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * App\Model\Comment</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@property</span> int $id 主键,评论id</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@property</span> int $replied_id 被评论id</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@property</span> int $replied_root_id 直接评论id</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@property</span> string|null $content 评论内容</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@property</span> int|null $status</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@property</span> int $from_user_id 评论人id</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@property</span> string $from_user_name 评论人姓名</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@property</span> int|null $to_user_id 被评论人id</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@property</span> string $to_user_name 被评论人姓名</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@property</span> string $create_at</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@method</span> static \Illuminate\Database\Eloquent\Builder|\App\Model\Comment whereContent($value)</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@method</span> static \Illuminate\Database\Eloquent\Builder|\App\Model\Comment whereCreateAt($value)</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@method</span> static \Illuminate\Database\Eloquent\Builder|\App\Model\Comment whereFromUserId($value)</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@method</span> static \Illuminate\Database\Eloquent\Builder|\App\Model\Comment whereFromUserName($value)</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@method</span> static \Illuminate\Database\Eloquent\Builder|\App\Model\Comment whereId($value)</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@method</span> static \Illuminate\Database\Eloquent\Builder|\App\Model\Comment whereRepliedId($value)</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@method</span> static \Illuminate\Database\Eloquent\Builder|\App\Model\Comment whereRepliedRootId($value)</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@method</span> static \Illuminate\Database\Eloquent\Builder|\App\Model\Comment whereStatus($value)</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@method</span> static \Illuminate\Database\Eloquent\Builder|\App\Model\Comment whereToUserId($value)</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@method</span> static \Illuminate\Database\Eloquent\Builder|\App\Model\Comment whereToUserName($value)</span><br><span class="hljs-comment"> */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Comment</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span></span><br><span class="hljs-class"></span>&#123;<br>    <span class="hljs-keyword">protected</span> <span class="hljs-variable">$table</span> = <span class="hljs-string">&#x27;Comment&#x27;</span>;<br>    <span class="hljs-keyword">protected</span> <span class="hljs-variable">$primaryKey</span> = <span class="hljs-string">&#x27;id&#x27;</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$timestamps</span> = <span class="hljs-literal">false</span>;<br><br>&#125;<br></code></pre></td></tr></table></figure>
 <h2 id="使用案例">使用案例</h2>
 <p>好，现在假想下面一个场景：</p>
@@ -466,7 +455,7 @@ id="illuminatesupportcollectionall"><code>Illuminate\Support\Collection::all()</
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%86%85%E5%B9%95/" class="category-chain-item">技术内幕</a>
+  <a href="/categories/%E6%8A%80%E6%9C%AF/" class="category-chain-item">技术</a>
   
   
 
@@ -482,6 +471,8 @@ id="illuminatesupportcollectionall"><code>Illuminate\Support\Collection::all()</
       <i class="iconfont icon-tags"></i>
       
         <a href="/tags/PHP/" class="print-no-link">#PHP</a>
+      
+        <a href="/tags/Laravel/" class="print-no-link">#Laravel</a>
       
     </div>
   
@@ -519,7 +510,7 @@ id="illuminatesupportcollectionall"><code>Illuminate\Support\Collection::all()</
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
                   <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-by"></i>
+                    <i class="iconfont icon-cc-by"></i>
                   </span>
                 </a>
               
@@ -702,24 +693,25 @@ id="illuminatesupportcollectionall"><code>Illuminate\Support\Collection::all()</
 
   
     
-      <span id="busuanzi_container_site_pv" style="display: none">
+      <span id="leancloud-site-pv-container" style="display: none">
         总访问量 
-        <span id="busuanzi_value_site_pv"></span>
+        <span id="leancloud-site-pv"></span>
          次
       </span>
     
     
-      <span id="busuanzi_container_site_uv" style="display: none">
+      <span id="leancloud-site-uv-container" style="display: none">
         总访客数 
-        <span id="busuanzi_value_site_uv"></span>
+        <span id="leancloud-site-uv"></span>
          人
       </span>
     
     
-  
-</div>
 
   
+
+</div>
+
   
   
 </div>
@@ -769,6 +761,33 @@ id="illuminatesupportcollectionall"><code>Illuminate\Support\Collection::all()</
   
 
 
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
 
 
   
@@ -910,8 +929,6 @@ id="illuminatesupportcollectionall"><code>Illuminate\Support\Collection::all()</
   <script defer src="/js/leancloud.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 

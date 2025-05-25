@@ -98,8 +98,11 @@
 }
 </style><!-- hexo injector head_begin end -->
   <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
   <link rel="icon" href="/img/favicon.png">
+  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -114,20 +117,19 @@
 <meta property="og:site_name" content="西西弗">
 <meta property="og:description" content="💪 改造公司基础设施">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/assets/imgs/2025-05-25_211849_851.png">
 <meta property="og:image" content="http://example.com/assets/2024-06-04-xhs-ci-cd-flow.png">
-<meta property="og:image" content="http://example.com/imgs/2024-06-04-gitlab-ci-workflow.drawio.png">
-<meta property="og:image" content="http://example.com/imgs/2024-06-04-old-golang-runtime-docker-image.png">
-<meta property="og:image" content="http://example.com/imgs/2024-06-04-new-golang-runtime-container-image.png">
+<meta property="og:image" content="http://example.com/assets/imgs/2024-06-04-gitlab-ci-workflow.drawio.png">
 <meta property="article:published_time" content="2024-06-04T07:23:30.000Z">
-<meta property="article:modified_time" content="2024-07-02T14:32:05.871Z">
+<meta property="article:modified_time" content="2025-05-25T17:06:41.935Z">
 <meta property="article:author" content="soul11201">
+<meta property="article:tag" content="构建">
+<meta property="article:tag" content="部署">
 <meta property="article:tag" content="Docker">
 <meta property="article:tag" content="Golang">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/assets/2024-06-04-xhs-ci-cd-flow.png">
+<meta name="twitter:image" content="http://example.com/assets/imgs/2025-05-25_211849_851.png">
   
-  
-    <meta name="referrer" content="no-referrer-when-downgrade">
   
   
   <title>Gitlab CI/CD 改造回顾总结 ♻️ - 西西弗</title>
@@ -147,7 +149,7 @@
 <!-- 主题依赖的图标库，不要自行修改 -->
 <!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
 
@@ -168,7 +170,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":120,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"yv06ESJ2J5KwPSogj0y5aqzY-MdYXbMMI","app_key":"ODnROP22iCurdpYj4tNzJtji","server_url":null,"path":"window.location.pathname","ignore_local":false},"gtag":null},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":120,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"yv06ESJ2J5KwPSogj0y5aqzY-MdYXbMMI","app_key":"ODnROP22iCurdpYj4tNzJtji","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"gtag":null,"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -177,8 +179,6 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-  
-
   
 
   
@@ -244,30 +244,6 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>归档</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
-                <i class="iconfont icon-category-fill"></i>
-                <span>分类</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
               <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
@@ -283,18 +259,6 @@
               <a class="nav-link" href="/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/links/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>友链</span>
               </a>
             </li>
           
@@ -322,7 +286,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/assets/imgs/post_cover/default.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -335,6 +299,11 @@
         
           
   <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        soul11201
+      </span>
     
     
       <span class="post-meta">
@@ -371,6 +340,15 @@
 
     
     
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
+    
   </div>
 
 
@@ -403,10 +381,22 @@
           <article class="post-content mx-auto">
             <h1 id="seo-header">Gitlab CI/CD 改造回顾总结 ♻️</h1>
             
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    <!-- compatible with older versions-->
+                    本文最后更新于：2025-05-26T01:06:41+08:00
+                  
+                  
+
+                
+              </p>
+            
             
               <div class="markdown-body">
                 
-                <h2 id="背景">背景</h2>
+                <p><img src="/assets/imgs/2025-05-25_211849_851.png" srcset="/img/loading.gif" lazyload /></p>
+<h2 id="背景">背景</h2>
 <p>我是22年入职的公司。</p>
 <p>在熟悉环境的过程中发现：公司对 Go
 的支持人力投入有限，构建过程缺少规范、没有指导文档。比我入职早的一位同事，靠自己东找找西找找，缝合了一个
@@ -432,7 +422,7 @@ title="代码集成、构建、发版流程" alt="集成、发版流程" />
 <li>研发人员去发版系统选择构建好的镜像进行发布到测试、正式环境</li>
 </ol>
 <h2 id="改造">改造</h2>
-<p><img src="/imgs/2024-06-04-gitlab-ci-workflow.drawio.png" srcset="/img/loading.gif" lazyload
+<p><img src="/assets/imgs/2024-06-04-gitlab-ci-workflow.drawio.png" srcset="/img/loading.gif" lazyload
 title="Gitlab CI/CD 工作流程" /></p>
 <h3 id="改造-golang-基础镜像">改造 Golang 基础镜像</h3>
 <h4 id="反解旧镜像dockerfile">反解旧镜像<code>Dockerfile</code></h4>
@@ -490,9 +480,11 @@ differences from glibc</a></li>
 <li>镜像大小从 440M → 110M （alpine 能降到 36M ）</li>
 <li>285个中、高、致命漏洞 降低为 23 个低级风险问题</li>
 </ol>
-<p><img src="/imgs/2024-06-04-old-golang-runtime-docker-image.png" srcset="/img/loading.gif" lazyload
+<p><img
+src="/assets/imgs/2024-06-04-old-golang-runtime-docker-image.png" srcset="/img/loading.gif" lazyload
 title="旧运行时镜像" /></p>
-<p><img src="/imgs/2024-06-04-new-golang-runtime-container-image.png" srcset="/img/loading.gif" lazyload
+<p><img
+src="/assets/imgs/2024-06-04-new-golang-runtime-container-image.png" srcset="/img/loading.gif" lazyload
 title="新运行时镜像" /></p>
 <h3 id="改造-.gitlab-ci.yml">改造 <code>.gitlab-ci.yml</code></h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">set</span> -x<br><span class="hljs-comment"># 基于 Dockerfile 构建镜像，并将构建后的镜像推送到私有镜像仓库</span><br><span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">docker_build</span></span>() &#123;<br>    <span class="hljs-built_in">local</span> app_id=<span class="hljs-variable">$1</span><br>    <span class="hljs-built_in">local</span> docker_tags=<span class="hljs-variable">$2</span><br>    docker build .  -t <span class="hljs-variable">$&#123;PRIVATE_DOCKER_REPO&#125;</span>/qa/<span class="hljs-string">&quot;<span class="hljs-variable">$app_id</span>&quot;</span>:<span class="hljs-string">&quot;<span class="hljs-variable">$docker_tags</span>&quot;</span><br>    docker login -u username -p passwordk <span class="hljs-variable">$&#123;PRIVATE_DOCKER_REPO&#125;</span><br>    docker push <span class="hljs-variable">$&#123;PRIVATE_DOCKER_REPO&#125;</span>/qa/<span class="hljs-string">&quot;<span class="hljs-variable">$app_id</span>&quot;</span>:<span class="hljs-string">&quot;<span class="hljs-variable">$docker_tags</span>&quot;</span><br>&#125;<br><br><br><br><span class="hljs-comment"># 更改时区，不然 date 函数时间会计算错误</span><br>sed -i <span class="hljs-string">&#x27;s/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g&#x27;</span> /etc/apk/repositories<br>apk add -U tzdata<br><span class="hljs-built_in">cp</span> /usr/share/zoneinfo/Asia/Shanghai /etc/localtime<br>CURRENT_DATETIME=<span class="hljs-string">&quot;<span class="hljs-subst">$(date +%Y%m%d_%H%M)</span>&quot;</span><br><br><br>tags=<span class="hljs-variable">$1</span><br>bin=<span class="hljs-variable">$2</span><br><span class="hljs-built_in">cp</span> <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;bin&#125;</span>&quot;</span> ./app<br>docker_build <span class="hljs-variable">$&#123;APP_ID&#125;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;tags&#125;</span>_<span class="hljs-variable">$&#123;CURRENT_DATETIME&#125;</span>&quot;</span><br></code></pre></td></tr></table></figure>
@@ -535,7 +527,7 @@ title="新运行时镜像" /></p>
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD/" class="category-chain-item">研发效能</a>
+  <a href="/categories/%E6%8A%80%E6%9C%AF/" class="category-chain-item">技术</a>
   
   
 
@@ -549,6 +541,10 @@ title="新运行时镜像" /></p>
   
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9E%84%E5%BB%BA/" class="print-no-link">#构建</a>
+      
+        <a href="/tags/%E9%83%A8%E7%BD%B2/" class="print-no-link">#部署</a>
       
         <a href="/tags/Docker/" class="print-no-link">#Docker</a>
       
@@ -590,7 +586,7 @@ title="新运行时镜像" /></p>
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
                   <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-by"></i>
+                    <i class="iconfont icon-cc-by"></i>
                   </span>
                 </a>
               
@@ -773,24 +769,25 @@ title="新运行时镜像" /></p>
 
   
     
-      <span id="busuanzi_container_site_pv" style="display: none">
+      <span id="leancloud-site-pv-container" style="display: none">
         总访问量 
-        <span id="busuanzi_value_site_pv"></span>
+        <span id="leancloud-site-pv"></span>
          次
       </span>
     
     
-      <span id="busuanzi_container_site_uv" style="display: none">
+      <span id="leancloud-site-uv-container" style="display: none">
         总访客数 
-        <span id="busuanzi_value_site_uv"></span>
+        <span id="leancloud-site-uv"></span>
          人
       </span>
     
     
-  
-</div>
 
   
+
+</div>
+
   
   
 </div>
@@ -840,6 +837,33 @@ title="新运行时镜像" /></p>
   
 
 
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
 
 
   
@@ -981,8 +1005,6 @@ title="新运行时镜像" /></p>
   <script defer src="/js/leancloud.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
