@@ -1,0 +1,930 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head><!-- hexo injector head_begin start --><style type="text/css">.douban-card-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-height: 400px;
+}
+
+.douban-card {
+    display: flex;
+    margin: 30px 10px;
+    padding: 15px;
+    border-radius: 15px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: antiquewhite;
+    text-decoration: none;
+}
+
+.douban-card:hover {
+    text-decoration: none;
+}
+
+.douban-card-bgimg {
+    position: absolute;
+    width: 115%;
+    height: 115%;
+    filter: blur(15px) brightness(0.6);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-img {
+    position: relative;
+    height: 130px;
+    width: 80px;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-left:hover .douban-card-img {
+    filter: blur(5px) brightness(0.6);
+    transform: perspective(800px) rotateX(180deg);
+}
+
+.douban-card-left .douban-card-img {
+    transition: all 500ms ease;
+}
+
+.douban-card-left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.douban-card-left .douban-card-status {
+    height: 130px;
+    width: 80px;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 30%;
+    transform: rotateX(180deg);
+    backface-visibility: hidden;
+    transition: all 500ms ease;
+}
+
+.douban-card-left:hover .douban-card-status {
+    transform: perspective(800px) rotateX(0deg);
+}
+
+.douban-card-right {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+    font-size: 16px;
+    font-family: "Courier New", Courier, monospace;
+    line-height: 1.3;
+    color: antiquewhite;
+}
+
+.douban-card-item {
+    margin-top: 4px;
+}
+</style><!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="soul11201">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="目录 {:toc}  先来意淫一下 群里大神分享了一个Stack Overflow上字符数组与字符串指针数组的差别的问答，感觉回答中说的都不太到我的心坎里，故也来凑下热闹。以下面代码为样例，从以下两个层次来说：  类型 内存分配  123456789101112#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;int main(int argc,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="字符数组与字符串指针区别">
+<meta property="og:url" content="http://example.com/2017/02/18/strptr-strarr-diff.html">
+<meta property="og:site_name" content="西西弗">
+<meta property="og:description" content="目录 {:toc}  先来意淫一下 群里大神分享了一个Stack Overflow上字符数组与字符串指针数组的差别的问答，感觉回答中说的都不太到我的心坎里，故也来凑下热闹。以下面代码为样例，从以下两个层次来说：  类型 内存分配  123456789101112#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;int main(int argc,">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-02-18T13:27:40.000Z">
+<meta property="article:modified_time" content="2024-01-21T15:36:08.733Z">
+<meta property="article:author" content="soul11201">
+<meta property="article:tag" content="C">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>字符数组与字符串指针区别 - 西西弗</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":120,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"yv06ESJ2J5KwPSogj0y5aqzY-MdYXbMMI","app_key":"ODnROP22iCurdpYj4tNzJtji","server_url":null,"path":"window.location.pathname","ignore_local":false},"gtag":null},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="西西弗" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>西西弗</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="字符数组与字符串指针区别"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2017-02-18 21:27" pubdate>
+          2017年2月18日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          956 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          8 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">字符数组与字符串指针区别</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <ul>
+<li>目录 {:toc}</li>
+</ul>
+<h2 id="先来意淫一下">先来意淫一下</h2>
+<p>群里大神分享了一个<code>Stack Overflow</code>上<code>字符数组与字符串指针数组的差别</code>的问答，感觉回答中说的都不太到我的心坎里，故也来凑下热闹。以下面代码为样例，从以下两个层次来说：</p>
+<ul>
+<li>类型</li>
+<li>内存分配</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> * argv[])</span><br>&#123;<br><br>    <span class="hljs-type">char</span> * p = <span class="hljs-string">&quot;good morning&quot;</span>;<br>    <span class="hljs-type">char</span> h[] = <span class="hljs-string">&quot;hello world&quot;</span>;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s\n&quot;</span>,p);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s\n&quot;</span>,h);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<pre><code class="hljs">char * p = &quot;good morning&quot;;
+char h[] = &quot;hello world&quot;;</code></pre>
+<h3 id="类型语义">类型（语义）</h3>
+<p>从c语言种对两种类型使用时的感受来说，存在<code>char h[]</code>&lt;==&gt;
+<code>char * const h</code>这种等价关系。对于程序员来说，<code>使用</code>时候的差别也主要体现在
+<code>char * const h</code> 中的多出的<code>const</code>的差别。</p>
+<h3 id="内存分配语义的实现">内存分配（语义的实现）</h3>
+<p>两种类型表示的语义不同，其值所占的底层内存位置、生存时间也就不一样。</p>
+<p>函数在底层实现的时候放在栈上的，运行结束的时候，栈会被回收，函数局部变量的值所占用的内存编译器会直接回收。</p>
+<p>指针指向的内容表示指针指向的内存由程序员管理申请、释放等工作。</p>
+<p><code>故指针的值在栈上，字符字面量填充的数组也在栈上，指针指向的内容分配在堆上。</code></p>
+<p>另外指针在底层指令上会<code>多一次访存</code>。</p>
+<h2 id="看看到底汇编长啥样">看看到底汇编长啥样</h2>
+<h3 id="总结">总结</h3>
+<pre><code class="hljs">总结据说该放最后，但我还是把它提上来了。：）</code></pre>
+<p>原先我还担心高级别的优化，会把我上面的代码，堆上的也优化到栈上，故编译了两个优化级别的，其实并没有。反而都是验证了我上面的两个想法。</p>
+<p>核心代码如下</p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs mel"><br><span class="hljs-comment">//预先分配一个空闲栈，32字节</span><br>subl	$32, %esp<br><br><span class="hljs-comment">// char * p 这个局部变量 </span><br>movl	$LC0, (%esp) <br><br><span class="hljs-comment">//char h[] 这个局部变量，下面这几个魔数就是 hello world </span><br>movl	$1819043176, <span class="hljs-number">20</span>(%esp)<br>movl	$1870078063, <span class="hljs-number">24</span>(%esp)<br>movl	$6581362, <span class="hljs-number">28</span>(%esp)<br><br><span class="hljs-comment">//意外之获，c 中 printf 格式有换行,底层调用就是_puts，去掉换行就变成了另外一个：）</span><br><span class="hljs-comment">//_puts输出 栈顶存放的指针 所指向的字符串</span><br>call	_puts<br><br><span class="hljs-comment">//-----</span><br>leal	<span class="hljs-number">20</span>(%esp), %eax<br>movl	%eax, (%esp)<br>call	_puts<br><br></code></pre></td></tr></table></figure>
+<h3 id="环境信息">环境信息</h3>
+<ul>
+<li><p>系统环境：<code>window + MinGw gcc 5.3.0</code></p></li>
+<li><p>编译命令: <code>gcc -m32 -S -O0 Untitled1.c</code></p></li>
+</ul>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs brainfuck"><span class="hljs-comment">$ gcc</span> <span class="hljs-literal">-</span><span class="hljs-comment">v</span><br><span class="hljs-comment">Using built</span><span class="hljs-literal">-</span><span class="hljs-comment">in specs</span><span class="hljs-string">.</span><br><span class="hljs-comment">COLLECT_GCC=C:\MinGW\bin\gcc</span><span class="hljs-string">.</span><span class="hljs-comment">exe</span><br><span class="hljs-comment">COLLECT_LTO_WRAPPER=c:/mingw/bin/</span><span class="hljs-string">.</span><span class="hljs-string">.</span><span class="hljs-comment">/libexec/gcc/mingw32/5</span><span class="hljs-string">.</span><span class="hljs-comment">3</span><span class="hljs-string">.</span><span class="hljs-comment">0/lto</span><span class="hljs-literal">-</span><span class="hljs-comment">wrapper</span><span class="hljs-string">.</span><span class="hljs-comment">exe</span><br><span class="hljs-comment">Target: mingw32</span><br><span class="hljs-comment">Configured with:</span> <span class="hljs-string">.</span><span class="hljs-string">.</span><span class="hljs-comment">/src/gcc</span><span class="hljs-literal">-</span><span class="hljs-comment">5</span><span class="hljs-string">.</span><span class="hljs-comment">3</span><span class="hljs-string">.</span><span class="hljs-comment">0/configure</span> <span class="hljs-literal">--</span><span class="hljs-comment">build=x86_64</span><span class="hljs-literal">-</span><span class="hljs-comment">pc</span><span class="hljs-literal">-</span><span class="hljs-comment">linux</span><span class="hljs-literal">-</span><span class="hljs-comment">gnu</span> <span class="hljs-literal">--</span><span class="hljs-comment">host=mingw32</span> <span class="hljs-literal">--</span><span class="hljs-comment">prefix=/mingw</span> <span class="hljs-literal">--</span><span class="hljs-comment">disable</span><span class="hljs-literal">-</span><span class="hljs-comment">win32</span><span class="hljs-literal">-</span><span class="hljs-comment">registry</span> <span class="hljs-literal">--</span><span class="hljs-comment">target=mingw32</span> <span class="hljs-literal">--</span><span class="hljs-comment">with</span><span class="hljs-literal">-</span><span class="hljs-comment">arch=i586</span> <span class="hljs-literal">--</span><span class="hljs-comment">enable</span><span class="hljs-literal">-</span><span class="hljs-comment">languages=c</span><span class="hljs-string">,</span><span class="hljs-comment">c</span><span class="hljs-literal">++</span><span class="hljs-string">,</span><span class="hljs-comment">objc</span><span class="hljs-string">,</span><span class="hljs-comment">obj</span><span class="hljs-literal">-</span><span class="hljs-comment">c</span><span class="hljs-literal">++</span><span class="hljs-string">,</span><span class="hljs-comment">fortran</span><span class="hljs-string">,</span><span class="hljs-comment">ada</span> <span class="hljs-literal">--</span><span class="hljs-comment">enable</span><span class="hljs-literal">-</span><span class="hljs-comment">static</span> <span class="hljs-literal">--</span><span class="hljs-comment">enable</span><span class="hljs-literal">-</span><span class="hljs-comment">shared</span> <span class="hljs-literal">--</span><span class="hljs-comment">enable</span><span class="hljs-literal">-</span><span class="hljs-comment">threads</span> <span class="hljs-literal">--</span><span class="hljs-comment">with</span><span class="hljs-literal">-</span><span class="hljs-comment">dwarf2</span> <span class="hljs-literal">--</span><span class="hljs-comment">disable</span><span class="hljs-literal">-</span><span class="hljs-comment">sjlj</span><span class="hljs-literal">-</span><span class="hljs-comment">exceptions</span> <span class="hljs-literal">--</span><span class="hljs-comment">enable</span><span class="hljs-literal">-</span><span class="hljs-comment">version</span><span class="hljs-literal">-</span><span class="hljs-comment">specific</span><span class="hljs-literal">-</span><span class="hljs-comment">runtime</span><span class="hljs-literal">-</span><span class="hljs-comment">libs</span> <span class="hljs-literal">--</span><span class="hljs-comment">with</span><span class="hljs-literal">-</span><span class="hljs-comment">libintl</span><span class="hljs-literal">-</span><span class="hljs-comment">prefix=/mingw</span> <span class="hljs-literal">--</span><span class="hljs-comment">enable</span><span class="hljs-literal">-</span><span class="hljs-comment">libstdcxx</span><span class="hljs-literal">-</span><span class="hljs-comment">debug</span> <span class="hljs-literal">--</span><span class="hljs-comment">with</span><span class="hljs-literal">-</span><span class="hljs-comment">tune=generic</span> <span class="hljs-literal">--</span><span class="hljs-comment">enable</span><span class="hljs-literal">-</span><span class="hljs-comment">libgomp</span> <span class="hljs-literal">--</span><span class="hljs-comment">disable</span><span class="hljs-literal">-</span><span class="hljs-comment">libvtv</span> <span class="hljs-literal">--</span><span class="hljs-comment">enable</span><span class="hljs-literal">-</span><span class="hljs-comment">nls : (reconfigured)</span> <span class="hljs-string">.</span><span class="hljs-string">.</span><span class="hljs-comment">/src/gcc</span><span class="hljs-literal">-</span><span class="hljs-comment">5</span><span class="hljs-string">.</span><span class="hljs-comment">3</span><span class="hljs-string">.</span><span class="hljs-comment">0/configure</span> <span class="hljs-literal">--</span><span class="hljs-comment">build=x86_64</span><span class="hljs-literal">-</span><span class="hljs-comment">pc</span><span class="hljs-literal">-</span><span class="hljs-comment">linux</span><span class="hljs-literal">-</span><span class="hljs-comment">gnu</span> <span class="hljs-literal">--</span><span class="hljs-comment">host=mingw32</span> <span class="hljs-literal">--</span><span class="hljs-comment">prefix=/mingw</span> <span class="hljs-literal">--</span><span class="hljs-comment">disable</span><span class="hljs-literal">-</span><span class="hljs-comment">win32</span><span class="hljs-literal">-</span><span class="hljs-comment">registry</span> <span class="hljs-literal">--</span><span class="hljs-comment">target=mingw32</span> <span class="hljs-literal">--</span><span class="hljs-comment">with</span><span class="hljs-literal">-</span><span class="hljs-comment">arch=i586</span> <span class="hljs-literal">--</span><span class="hljs-comment">enable</span><span class="hljs-literal">-</span><span class="hljs-comment">languages=c</span><span class="hljs-string">,</span><span class="hljs-comment">c</span><span class="hljs-literal">++</span><span class="hljs-string">,</span><span class="hljs-comment">objc</span><span class="hljs-string">,</span><span class="hljs-comment">obj</span><span class="hljs-literal">-</span><span class="hljs-comment">c</span><span class="hljs-literal">++</span><span class="hljs-string">,</span><span class="hljs-comment">fortran</span><span class="hljs-string">,</span><span class="hljs-comment">ada</span> <span class="hljs-literal">--</span><span class="hljs-comment">enable</span><span class="hljs-literal">-</span><span class="hljs-comment">static</span> <span class="hljs-literal">--</span><span class="hljs-comment">enable</span><span class="hljs-literal">-</span><span class="hljs-comment">shared</span> <span class="hljs-literal">--</span><span class="hljs-comment">enable</span><span class="hljs-literal">-</span><span class="hljs-comment">threads</span> <span class="hljs-literal">--</span><span class="hljs-comment">with</span><span class="hljs-literal">-</span><span class="hljs-comment">dwarf2</span> <span class="hljs-literal">--</span><span class="hljs-comment">disable</span><span class="hljs-literal">-</span><span class="hljs-comment">sjlj</span><span class="hljs-literal">-</span><span class="hljs-comment">exceptions</span> <span class="hljs-literal">--</span><span class="hljs-comment">enable</span><span class="hljs-literal">-</span><span class="hljs-comment">version</span><span class="hljs-literal">-</span><span class="hljs-comment">specific</span><span class="hljs-literal">-</span><span class="hljs-comment">runtime</span><span class="hljs-literal">-</span><span class="hljs-comment">libs</span> <span class="hljs-literal">--</span><span class="hljs-comment">with</span><span class="hljs-literal">-</span><span class="hljs-comment">libiconv</span><span class="hljs-literal">-</span><span class="hljs-comment">prefix=/mingw</span> <span class="hljs-literal">--</span><span class="hljs-comment">with</span><span class="hljs-literal">-</span><span class="hljs-comment">libintl</span><span class="hljs-literal">-</span><span class="hljs-comment">prefix=/mingw</span> <span class="hljs-literal">--</span><span class="hljs-comment">enable</span><span class="hljs-literal">-</span><span class="hljs-comment">libstdcxx</span><span class="hljs-literal">-</span><span class="hljs-comment">debug</span> <span class="hljs-literal">--</span><span class="hljs-comment">with</span><span class="hljs-literal">-</span><span class="hljs-comment">tune=generic</span> <span class="hljs-literal">--</span><span class="hljs-comment">enable</span><span class="hljs-literal">-</span><span class="hljs-comment">libgomp</span> <span class="hljs-literal">--</span><span class="hljs-comment">disable</span><span class="hljs-literal">-</span><span class="hljs-comment">libvtv</span> <span class="hljs-literal">--</span><span class="hljs-comment">enable</span><span class="hljs-literal">-</span><span class="hljs-comment">nls</span><br><span class="hljs-comment">Thread model: win32</span><br><span class="hljs-comment">gcc version 5</span><span class="hljs-string">.</span><span class="hljs-comment">3</span><span class="hljs-string">.</span><span class="hljs-comment">0 (GCC)</span><br><br></code></pre></td></tr></table></figure>
+<h3 id="二级优化--o2">二级优化 -O2</h3>
+<pre><code class="hljs">gcc -m32 -S -O2 Untitled1.c   -o 2.s</code></pre>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><br>	<span class="hljs-string">.file</span>	<span class="hljs-string">&quot;Untitled1.c&quot;</span><br>	<span class="hljs-string">.def</span>	___main;	<span class="hljs-string">.scl</span>	2;	<span class="hljs-string">.type</span>	32;	<span class="hljs-string">.endef</span><br>	<span class="hljs-string">.section</span> <span class="hljs-string">.rdata</span>,<span class="hljs-string">&quot;dr&quot;</span><br>LC0:<br>	<span class="hljs-string">.ascii</span> <span class="hljs-string">&quot;good morning\0&quot;</span><br>	<span class="hljs-string">.section</span>	<span class="hljs-string">.text.unlikely</span>,<span class="hljs-string">&quot;x&quot;</span><br>LCOLDB1:<br>	<span class="hljs-string">.section</span>	<span class="hljs-string">.text.startup</span>,<span class="hljs-string">&quot;x&quot;</span><br>LHOTB1:<br>	<span class="hljs-string">.p2align</span> 4,,15<br>	<span class="hljs-string">.globl</span>	_main<br>	<span class="hljs-string">.def</span>	_main;	<span class="hljs-string">.scl</span>	2;	<span class="hljs-string">.type</span>	32;	<span class="hljs-string">.endef</span><br>_main:<br>LFB21:<br>	<span class="hljs-string">.cfi_startproc</span><br>	pushl	%ebp<br>	<span class="hljs-string">.cfi_def_cfa_offset</span> 8<br>	<span class="hljs-string">.cfi_offset</span> 5, -8<br>	movl	%esp, %ebp<br>	<span class="hljs-string">.cfi_def_cfa_register</span> 5<br>	andl	$-16, %esp<br>	subl	$32, %esp<br>	call	___main<br>	movl	$LC0, <span class="hljs-params">(%esp)</span><br>	movl	$1819043176, 20<span class="hljs-params">(%esp)</span><br>	movl	$1870078063, 24<span class="hljs-params">(%esp)</span><br>	movl	$6581362, 28<span class="hljs-params">(%esp)</span><br>	call	_puts<br>	leal	20<span class="hljs-params">(%esp)</span>, %eax<br>	movl	%eax, <span class="hljs-params">(%esp)</span><br>	call	_puts<br>	xorl	%eax, %eax<br>	leave<br>	<span class="hljs-string">.cfi_restore</span> 5<br>	<span class="hljs-string">.cfi_def_cfa</span> 4, 4<br>	ret<br>	<span class="hljs-string">.cfi_endproc</span><br>LFE21:<br>	<span class="hljs-string">.section</span>	<span class="hljs-string">.text.unlikely</span>,<span class="hljs-string">&quot;x&quot;</span><br>LCOLDE1:<br>	<span class="hljs-string">.section</span>	<span class="hljs-string">.text.startup</span>,<span class="hljs-string">&quot;x&quot;</span><br>LHOTE1:<br>	<span class="hljs-string">.ident</span>	<span class="hljs-string">&quot;GCC: (GNU) 5.3.0&quot;</span><br>	<span class="hljs-string">.def</span>	_puts;	<span class="hljs-string">.scl</span>	2;	<span class="hljs-string">.type</span>	32;	<span class="hljs-string">.endef</span><br></code></pre></td></tr></table></figure>
+<h3 id="未优化--o0">未优化 -O0</h3>
+<pre><code class="hljs">gcc -m32 -S -O0 Untitled1.c   -o 2.s</code></pre>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs mel"><br>	.<span class="hljs-keyword">file</span>	<span class="hljs-string">&quot;Untitled1.c&quot;</span><br>	.def	___main;	.scl	<span class="hljs-number">2</span>;	.type	<span class="hljs-number">32</span>;	.endef<br>	.section .rdata,<span class="hljs-string">&quot;dr&quot;</span><br>LC0:<br>	.ascii <span class="hljs-string">&quot;good morning\0&quot;</span><br>	.<span class="hljs-keyword">text</span><br>	.globl	_main<br>	.def	_main;	.scl	<span class="hljs-number">2</span>;	.type	<span class="hljs-number">32</span>;	.endef<br>_main:<br>LFB12:<br>	.cfi_startproc<br>	pushl	%ebp<br>	.cfi_def_cfa_offset <span class="hljs-number">8</span><br>	.cfi_offset <span class="hljs-number">5</span>, <span class="hljs-number">-8</span><br>	movl	%esp, %ebp<br>	.cfi_def_cfa_register <span class="hljs-number">5</span><br>	andl	$-<span class="hljs-number">16</span>, %esp<br>	subl	$32, %esp<br>	call	___main<br>	movl	$LC0, <span class="hljs-number">28</span>(%esp)<br>	movl	$1819043176, <span class="hljs-number">16</span>(%esp)<br>	movl	$1870078063, <span class="hljs-number">20</span>(%esp)<br>	movl	$6581362, <span class="hljs-number">24</span>(%esp)<br>	movl	<span class="hljs-number">28</span>(%esp), %eax<br>	movl	%eax, (%esp)<br>	call	_puts<br>	leal	<span class="hljs-number">16</span>(%esp), %eax<br>	movl	%eax, (%esp)<br>	call	_puts<br>	movl	$0, %eax<br>	leave<br>	.cfi_restore <span class="hljs-number">5</span><br>	.cfi_def_cfa <span class="hljs-number">4</span>, <span class="hljs-number">4</span><br>	ret<br>	.cfi_endproc<br>LFE12:<br>	.ident	<span class="hljs-string">&quot;GCC: (GNU) 5.3.0&quot;</span><br>	.def	_puts;	.scl	<span class="hljs-number">2</span>;	.type	<span class="hljs-number">32</span>;	.endef<br><br><br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF/" class="category-chain-item">技术</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF/C/" class="category-chain-item">C</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/C/" class="print-no-link">#C</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>字符数组与字符串指针区别</div>
+      <div>http://example.com/2017/02/18/strptr-strarr-diff.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>soul11201</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2017年2月18日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2017/02/22/systemstap-install.html" title="systemtap 安装 总结">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">systemtap 安装 总结</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2016/12/19/wrk.html" title="wrk 使用">
+                        <span class="hidden-mobile">wrk 使用</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    
+      <script>
+        Fluid.utils.loadComments('#disqus_thread', function() {
+          Fluid.utils.createCssLink('https://cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css');
+          Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js', function() {
+            new DisqusJS({
+              shortname: 'soul11201',
+              apikey: 'nUzTu7ZFOW6gndaEbSWua7u2VcSvpGBoO5tgTkP6fVU5YD7blOtcLMFeBtpGsf1u'
+            });
+          });
+        });
+      </script>
+    
+    <noscript>Please enable JavaScript to view the comments</noscript>
+  </div>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+  <!-- Custom -->
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
