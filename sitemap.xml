@@ -1691,13 +1691,6 @@
   </url>
   
   <url>
-    <loc>https://noname007.github.io/tags/Yii2/</loc>
-    <lastmod>2025-06-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://noname007.github.io/tags/awk/</loc>
     <lastmod>2025-06-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -1706,6 +1699,13 @@
   
   <url>
     <loc>https://noname007.github.io/tags/%E6%97%A5%E5%BF%97/</loc>
+    <lastmod>2025-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://noname007.github.io/tags/Yii2/</loc>
     <lastmod>2025-06-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1810,14 +1810,14 @@
   </url>
   
   <url>
-    <loc>https://noname007.github.io/tags/Thrift/</loc>
+    <loc>https://noname007.github.io/tags/troubleshooting/</loc>
     <lastmod>2025-06-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://noname007.github.io/tags/troubleshooting/</loc>
+    <loc>https://noname007.github.io/tags/Thrift/</loc>
     <lastmod>2025-06-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1978,14 +1978,14 @@
   </url>
   
   <url>
-    <loc>https://noname007.github.io/tags/Emacs/</loc>
+    <loc>https://noname007.github.io/tags/Python/</loc>
     <lastmod>2025-06-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://noname007.github.io/tags/Python/</loc>
+    <loc>https://noname007.github.io/tags/Emacs/</loc>
     <lastmod>2025-06-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
