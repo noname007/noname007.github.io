@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>RBAC 权限系统落地经验要点总结 - 1</title>
+    <link href="/2025/06/08/rbac.html"/>
+    <url>/2025/06/08/rbac.html</url>
+    
+    <content type="html"><![CDATA[<h2 id="一些基础概念">一些基础概念</h2><p>SSD 静态分离（会计、出纳设计两个角色） DSD动态分离（一个人(账号)即使被同时分配了出纳、会计两个角色，但一个会话期间只能使用一个角色）</p><figure><img src="/assets/imgs/2025060903.png" alt="alt text" /><figcaption aria-hidden="true">alt text</figcaption></figure><p>Attr-RBAC: 基于属性的 RBAC(业务员只能查看其维护的客户信息，业务员组长能看所有组员维护的客户信息)</p><p>Rule-RBAC: 基于规则的 RBAC (系统只能在早上 9:00- 18:00才允许业务员进行业务操作)</p><h2 id="一些重要的点">一些重要的点</h2><h3 id="能看到就有对应的权限">能看到就有对应的权限</h3><p>能看到页面索引连接，就能读取索引下面的数据不同的人同一个页面看到的可能数据不一样能看到操作按钮，就有对应操作的权限</p><h3 id="关注点分离">关注点分离</h3><p>产研团队要注意在系统设计落地过程中各个角色的职责边界范围</p><figure><img src="/assets/imgs/2025060902.png" alt="alt text" /><figcaption aria-hidden="true">alt text</figcaption></figure><p>RD、FE 关注点的差异 FE(Frontend): 关注权限 对 页面显示的影响和控制RD(Backend): 关注权限 对 数据流的影响和控制</p><h3 id="角色说明表角色---权限矩阵表权限-资源表">角色说明表、角色 -权限矩阵表、权限-资源表</h3><p>从 DDD的角度来说，每个角色、权限、资源点都是统一语言，可以让不同角色在不同层分别有清晰、一致的语义理解。角色 - 权限矩阵表：GUI 系统可以细分为页面、操作、数据三个维度的权限</p><figure><img src="/assets/imgs/2025060901.png" alt="alt text" /><figcaption aria-hidden="true">alt text</figcaption></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>RBAC</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>如何为 Git 设置代理连接 GitHub</title>
     <link href="/2025/06/04/git-proxy.html"/>
     <url>/2025/06/04/git-proxy.html</url>

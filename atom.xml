@@ -6,7 +6,7 @@
   <link href="https://noname007.github.io/atom.xml" rel="self"/>
   
   <link href="https://noname007.github.io/"/>
-  <updated>2025-06-08T09:22:03.018Z</updated>
+  <updated>2025-06-08T16:20:37.788Z</updated>
   <id>https://noname007.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>RBAC 权限系统落地经验要点总结 - 1</title>
+    <link href="https://noname007.github.io/2025/06/08/rbac.html"/>
+    <id>https://noname007.github.io/2025/06/08/rbac.html</id>
+    <published>2025-06-08T15:21:14.000Z</published>
+    <updated>2025-06-08T16:20:37.788Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一些基础概念">一些基础概念</h2><p>SSD 静态分离（会计、出纳设计两个角色） DSD动态分离（一个人(账号)即使被同时分配了出纳、会计两个角色，但一个会话期间只能使用一个角色）</p><figure><img src="/assets/imgs/2025060903.png" alt="alt text" /><figcaption aria-hidden="true">alt text</figcaption></figure><p>Attr-RBAC: 基于属性的 RBAC(业务员只能查看其维护的客户信息，业务员组长能看所有组员维护的客户信息)</p><p>Rule-RBAC: 基于规则的 RBAC (系统只能在早上 9:00- 18:00才允许业务员进行业务操作)</p><h2 id="一些重要的点">一些重要的点</h2><h3 id="能看到就有对应的权限">能看到就有对应的权限</h3><p>能看到页面索引连接，就能读取索引下面的数据不同的人同一个页面看到的可能数据不一样能看到操作按钮，就有对应操作的权限</p><h3 id="关注点分离">关注点分离</h3><p>产研团队要注意在系统设计落地过程中各个角色的职责边界范围</p><figure><img src="/assets/imgs/2025060902.png" alt="alt text" /><figcaption aria-hidden="true">alt text</figcaption></figure><p>RD、FE 关注点的差异 FE(Frontend): 关注权限 对 页面显示的影响和控制RD(Backend): 关注权限 对 数据流的影响和控制</p><h3 id="角色说明表角色---权限矩阵表权限-资源表">角色说明表、角色 -权限矩阵表、权限-资源表</h3><p>从 DDD的角度来说，每个角色、权限、资源点都是统一语言，可以让不同角色在不同层分别有清晰、一致的语义理解。角色 - 权限矩阵表：GUI 系统可以细分为页面、操作、数据三个维度的权限</p><figure><img src="/assets/imgs/2025060901.png" alt="alt text" /><figcaption aria-hidden="true">alt text</figcaption></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;一些基础概念&quot;&gt;一些基础概念&lt;/h2&gt;
+&lt;p&gt;SSD 静态分离（会计、出纳设计两个角色） DSD
+动态分离（一个人(账号)即使被同时分配了出纳、会计两个角色，但一个会话期间只能使用一个角色）&lt;/p&gt;
+&lt;figure&gt;
+&lt;img src=&quot;/assets/imgs/</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="https://noname007.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="RBAC" scheme="https://noname007.github.io/tags/RBAC/"/>
+    
+  </entry>
   
   <entry>
     <title>如何为 Git 设置代理连接 GitHub</title>
@@ -507,33 +535,6 @@ syntax error (line 52): </summary>
     <category term="系统编程" scheme="https://noname007.github.io/tags/%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/"/>
     
     <category term="Python" scheme="https://noname007.github.io/tags/Python/"/>
-    
-    <category term="并发" scheme="https://noname007.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>多进程实战 - my cron</title>
-    <link href="https://noname007.github.io/2021/10/31/my_cron.html"/>
-    <id>https://noname007.github.io/2021/10/31/my_cron.html</id>
-    <published>2021-10-31T15:31:54.000Z</published>
-    <updated>2025-05-25T12:32:17.827Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>cron 程序无法使用</li><li>公司 dcron 平台 任务不方便管理，页面只能显示一个 porject和token<ul><li>要么不停的切换 project 在浏览器</li><li>要么所有的任务都压缩到一个project中，因为任务还无法删除，目前有近200个任务</li></ul></li></ul><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;fcntl.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;unistd.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/stat.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;errno.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/wait.h&gt;</span></span><br><br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> DEBUG 0</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> YII_APP_BASE_DIR <span class="hljs-string">&quot;/var/www/app/yii&quot;</span></span><br><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">job</span>&#123;</span><br>    <span class="hljs-type">char</span>* yii_cmd;<br><br>    <span class="hljs-type">pid_t</span> pid;<br><span class="hljs-comment">//    char* stdout_file;</span><br><span class="hljs-comment">//    char* stderr_file;</span><br>    <span class="hljs-type">int</span> running;<br>&#125;<span class="hljs-type">job_t</span>;<br><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">process_job</span><span class="hljs-params">(<span class="hljs-type">job_t</span>* job)</span> &#123;<br>    <span class="hljs-type">pid_t</span> job_pid = fork();<br><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s %x\n&quot;</span>, __FUNCTION__, job);<br>    <span class="hljs-keyword">if</span>(job_pid == <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;----&gt;task %s process id: %d %d\n&quot;</span>,job-&gt;yii_cmd, getpid(), getppid());<br>        execlp(<span class="hljs-string">&quot;php70&quot;</span>, <span class="hljs-string">&quot;php70&quot;</span>,YII_APP_BASE_DIR, job-&gt;yii_cmd, <span class="hljs-literal">NULL</span>);<br>        perror(<span class="hljs-string">&quot;execlp&quot;</span>);<br>    <br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      <br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;------------&gt;task manager process id: %d %d\n&quot;</span>, getpid(), getppid());<br>        job-&gt;running = <span class="hljs-number">1</span>;<br>        job-&gt;pid = job_pid;<br>        <span class="hljs-keyword">return</span> job_pid;<br>    &#125; <br>&#125;<br><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">deamanize</span><span class="hljs-params">()</span>&#123;<br>  <br>    <span class="hljs-type">pid_t</span> pid =  fork();<br><br><span class="hljs-meta">#<span class="hljs-keyword">if</span> 1</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;aaaaa&quot;</span>);<br>    fflush(<span class="hljs-built_in">stdout</span>);<br>    <span class="hljs-type">int</span> fd = open(<span class="hljs-string">&quot;/dev/null&quot;</span>,O_RDWR);<br>    dup2(fd,<span class="hljs-number">0</span>);<br>    dup2(fd, <span class="hljs-number">1</span>);<br>    dup2(fd, <span class="hljs-number">2</span>);<br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br><br>  <br>    <span class="hljs-keyword">if</span>(pid !=<span class="hljs-number">0</span>)&#123;<br>        <span class="hljs-built_in">exit</span>(<span class="hljs-number">0</span>);<br>    &#125;<br><br>    setsid();<br>    umask(<span class="hljs-number">0</span>);<br>    chdir(<span class="hljs-string">&quot;/&quot;</span>);<br><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d %d\n&quot;</span>, getpid(), getppid());<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span>* argv[])</span>&#123;<br> <br>    deamanize();<br><br>    <span class="hljs-type">job_t</span> jobs[] = &#123;<br>        &#123;<br>            .yii_cmd = <span class="hljs-string">&quot;test/test&quot;</span>,<br>            .running = <span class="hljs-number">0</span>,<br>            .pid = <span class="hljs-number">0</span>,<br>        &#125;,<br>    &#125;;<br><br>    <span class="hljs-type">int</span> jobs_num = <span class="hljs-keyword">sizeof</span>(jobs)/<span class="hljs-keyword">sizeof</span>(<span class="hljs-type">job_t</span>);<br><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;job_nums:%d\n&quot;</span>, jobs_num);<br><br>    <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>)&#123;<br>        sleep(<span class="hljs-number">60</span>);<br>        <span class="hljs-type">job_t</span>* jp = jobs;<br>        <span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;<br><br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%x %d\n&quot;</span>, jp, i);<br>        <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>; i &lt; jobs_num; ++i, jp++)<br>        &#123;<br>            <span class="hljs-keyword">if</span>(jp-&gt;running)&#123;<br>                <span class="hljs-type">int</span> ret_pid = waitpid(jp-&gt;pid,<span class="hljs-literal">NULL</span>, WNOHANG);<br>                <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;waitpid ret_val:%d\n&quot;</span>, ret_pid);<br>                <span class="hljs-keyword">if</span>(ret_pid == jp-&gt;pid)&#123;<br>                    jp-&gt;running = <span class="hljs-number">0</span>;<br>                &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ret_pid == <span class="hljs-number">0</span>)&#123;<br>                    <br>                &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ret_pid == <span class="hljs-number">-1</span>)&#123;<br>                    <span class="hljs-keyword">if</span>(errno == ECHILD) &#123;<br>                        jp-&gt;running = <span class="hljs-number">0</span>;<br>                    &#125;<br>                &#125;<br>            &#125;<br><br>            <span class="hljs-keyword">if</span>(!jp-&gt;running)&#123;<br>                process_job(&amp;jobs[i]);<br>            &#125;<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-    <summary type="html">分布式定时任务管理</summary>
-    
-    
-    
-    <category term="技术" scheme="https://noname007.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-    <category term="Linux" scheme="https://noname007.github.io/tags/Linux/"/>
-    
-    <category term="C" scheme="https://noname007.github.io/tags/C/"/>
-    
-    <category term="系统编程" scheme="https://noname007.github.io/tags/%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/"/>
     
     <category term="并发" scheme="https://noname007.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
     
