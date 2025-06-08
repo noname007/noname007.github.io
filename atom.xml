@@ -3,11 +3,11 @@
   <title>西西弗</title>
   
   
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <link href="https://noname007.github.io/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
+  <link href="https://noname007.github.io/"/>
   <updated>2025-05-25T17:31:42.840Z</updated>
-  <id>http://example.com/</id>
+  <id>https://noname007.github.io/</id>
   
   <author>
     <name>soul11201</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>分布式锁 - Redlock</title>
-    <link href="http://example.com/2024/11/27/redlock.html"/>
-    <id>http://example.com/2024/11/27/redlock.html</id>
+    <link href="https://noname007.github.io/2024/11/27/redlock.html"/>
+    <id>https://noname007.github.io/2024/11/27/redlock.html</id>
     <published>2024-11-27T15:38:49.000Z</published>
     <updated>2025-05-25T17:31:42.840Z</updated>
     
@@ -38,22 +38,22 @@
     
     
     
-    <category term="PHP" scheme="http://example.com/tags/PHP/"/>
+    <category term="PHP" scheme="https://noname007.github.io/tags/PHP/"/>
     
-    <category term="Yii2" scheme="http://example.com/tags/Yii2/"/>
+    <category term="Yii2" scheme="https://noname007.github.io/tags/Yii2/"/>
     
-    <category term="并发" scheme="http://example.com/tags/%E5%B9%B6%E5%8F%91/"/>
+    <category term="并发" scheme="https://noname007.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
     
-    <category term="Redis" scheme="http://example.com/tags/Redis/"/>
+    <category term="Redis" scheme="https://noname007.github.io/tags/Redis/"/>
     
-    <category term="分布式" scheme="http://example.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    <category term="分布式" scheme="https://noname007.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
     
   </entry>
   
   <entry>
     <title>Golang - N个协程交替打印数字</title>
-    <link href="http://example.com/2024/07/02/goroutin-print-number.html"/>
-    <id>http://example.com/2024/07/02/goroutin-print-number.html</id>
+    <link href="https://noname007.github.io/2024/07/02/goroutin-print-number.html"/>
+    <id>https://noname007.github.io/2024/07/02/goroutin-print-number.html</id>
     <published>2024-07-02T12:39:36.000Z</published>
     <updated>2025-05-25T13:16:37.564Z</updated>
     
@@ -64,19 +64,19 @@
     
     
     
-    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://noname007.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="并发" scheme="http://example.com/tags/%E5%B9%B6%E5%8F%91/"/>
+    <category term="并发" scheme="https://noname007.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
     
-    <category term="Golang" scheme="http://example.com/tags/Golang/"/>
+    <category term="Golang" scheme="https://noname007.github.io/tags/Golang/"/>
     
   </entry>
   
   <entry>
     <title>volatile 实战 - 使用信号实现 sleep 函数</title>
-    <link href="http://example.com/2024/06/17/volatile.html"/>
-    <id>http://example.com/2024/06/17/volatile.html</id>
+    <link href="https://noname007.github.io/2024/06/17/volatile.html"/>
+    <id>https://noname007.github.io/2024/06/17/volatile.html</id>
     <published>2024-06-17T11:51:26.000Z</published>
     <updated>2025-05-25T13:16:48.658Z</updated>
     
@@ -87,19 +87,19 @@
     
     
     
-    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://noname007.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="C" scheme="http://example.com/tags/C/"/>
+    <category term="C" scheme="https://noname007.github.io/tags/C/"/>
     
-    <category term="系统编程" scheme="http://example.com/tags/%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/"/>
+    <category term="系统编程" scheme="https://noname007.github.io/tags/%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
     <title>Gitlab CI/CD 改造回顾总结 ♻️</title>
-    <link href="http://example.com/2024/06/04/xhs-gitlab-ci.html"/>
-    <id>http://example.com/2024/06/04/xhs-gitlab-ci.html</id>
+    <link href="https://noname007.github.io/2024/06/04/xhs-gitlab-ci.html"/>
+    <id>https://noname007.github.io/2024/06/04/xhs-gitlab-ci.html</id>
     <published>2024-06-04T07:23:30.000Z</published>
     <updated>2025-05-25T17:06:41.935Z</updated>
     
@@ -110,23 +110,23 @@
     
     
     
-    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://noname007.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="构建" scheme="http://example.com/tags/%E6%9E%84%E5%BB%BA/"/>
+    <category term="构建" scheme="https://noname007.github.io/tags/%E6%9E%84%E5%BB%BA/"/>
     
-    <category term="部署" scheme="http://example.com/tags/%E9%83%A8%E7%BD%B2/"/>
+    <category term="部署" scheme="https://noname007.github.io/tags/%E9%83%A8%E7%BD%B2/"/>
     
-    <category term="Docker" scheme="http://example.com/tags/Docker/"/>
+    <category term="Docker" scheme="https://noname007.github.io/tags/Docker/"/>
     
-    <category term="Golang" scheme="http://example.com/tags/Golang/"/>
+    <category term="Golang" scheme="https://noname007.github.io/tags/Golang/"/>
     
   </entry>
   
   <entry>
     <title>使用命令行批量删除 Github 仓库</title>
-    <link href="http://example.com/2024/05/28/delete-github-repo-use-gh-xargs.html"/>
-    <id>http://example.com/2024/05/28/delete-github-repo-use-gh-xargs.html</id>
+    <link href="https://noname007.github.io/2024/05/28/delete-github-repo-use-gh-xargs.html"/>
+    <id>https://noname007.github.io/2024/05/28/delete-github-repo-use-gh-xargs.html</id>
     <published>2024-05-28T09:46:58.000Z</published>
     <updated>2025-05-25T13:21:09.280Z</updated>
     
@@ -137,17 +137,17 @@
     
     
     
-    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://noname007.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="软件工具" scheme="http://example.com/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/"/>
+    <category term="软件工具" scheme="https://noname007.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
   <entry>
     <title>Thrift  一种 协议-工具 设计方法</title>
-    <link href="http://example.com/2022/04/10/a-protocol-design-method.html"/>
-    <id>http://example.com/2022/04/10/a-protocol-design-method.html</id>
+    <link href="https://noname007.github.io/2022/04/10/a-protocol-design-method.html"/>
+    <id>https://noname007.github.io/2022/04/10/a-protocol-design-method.html</id>
     <published>2022-04-10T03:46:12.000Z</published>
     <updated>2025-05-25T16:58:53.679Z</updated>
     
@@ -158,17 +158,17 @@
     
     
     
-    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://noname007.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="Thrift" scheme="http://example.com/tags/Thrift/"/>
+    <category term="Thrift" scheme="https://noname007.github.io/tags/Thrift/"/>
     
   </entry>
   
   <entry>
     <title>迁回 Hexo</title>
-    <link href="http://example.com/2022/03/26/blog-migration.html"/>
-    <id>http://example.com/2022/03/26/blog-migration.html</id>
+    <link href="https://noname007.github.io/2022/03/26/blog-migration.html"/>
+    <id>https://noname007.github.io/2022/03/26/blog-migration.html</id>
     <published>2022-03-26T11:18:34.000Z</published>
     <updated>2024-07-02T14:27:27.607Z</updated>
     
@@ -179,25 +179,25 @@
     
     
     
-    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://noname007.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="hexo" scheme="http://example.com/tags/hexo/"/>
+    <category term="hexo" scheme="https://noname007.github.io/tags/hexo/"/>
     
-    <category term="jekyll" scheme="http://example.com/tags/jekyll/"/>
+    <category term="jekyll" scheme="https://noname007.github.io/tags/jekyll/"/>
     
-    <category term="emacs" scheme="http://example.com/tags/emacs/"/>
+    <category term="emacs" scheme="https://noname007.github.io/tags/emacs/"/>
     
-    <category term="waline" scheme="http://example.com/tags/waline/"/>
+    <category term="waline" scheme="https://noname007.github.io/tags/waline/"/>
     
-    <category term="org" scheme="http://example.com/tags/org/"/>
+    <category term="org" scheme="https://noname007.github.io/tags/org/"/>
     
   </entry>
   
   <entry>
     <title>工作居住证</title>
-    <link href="http://example.com/2022/03/25/gongzuojuzhuzheng.html"/>
-    <id>http://example.com/2022/03/25/gongzuojuzhuzheng.html</id>
+    <link href="https://noname007.github.io/2022/03/25/gongzuojuzhuzheng.html"/>
+    <id>https://noname007.github.io/2022/03/25/gongzuojuzhuzheng.html</id>
     <published>2022-03-25T05:09:03.000Z</published>
     <updated>2024-11-21T09:17:56.604Z</updated>
     
@@ -208,15 +208,15 @@
     
     
     
-    <category term="随笔" scheme="http://example.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    <category term="随笔" scheme="https://noname007.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
   </entry>
   
   <entry>
     <title>manjaro 使用攻略</title>
-    <link href="http://example.com/2022/03/18/manjaro.html"/>
-    <id>http://example.com/2022/03/18/manjaro.html</id>
+    <link href="https://noname007.github.io/2022/03/18/manjaro.html"/>
+    <id>https://noname007.github.io/2022/03/18/manjaro.html</id>
     <published>2022-03-18T13:02:56.000Z</published>
     <updated>2025-05-25T14:02:14.519Z</updated>
     
@@ -234,16 +234,16 @@
     
     
     
-    <category term="Linux" scheme="http://example.com/tags/Linux/"/>
+    <category term="Linux" scheme="https://noname007.github.io/tags/Linux/"/>
     
-    <category term="软件工具" scheme="http://example.com/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/"/>
+    <category term="软件工具" scheme="https://noname007.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
   <entry>
     <title>Go 语言学习笔记</title>
-    <link href="http://example.com/2022/01/14/Go-Notes.html"/>
-    <id>http://example.com/2022/01/14/Go-Notes.html</id>
+    <link href="https://noname007.github.io/2022/01/14/Go-Notes.html"/>
+    <id>https://noname007.github.io/2022/01/14/Go-Notes.html</id>
     <published>2022-01-14T04:36:17.000Z</published>
     <updated>2025-05-25T17:06:14.687Z</updated>
     
@@ -262,17 +262,17 @@
     
     
     
-    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://noname007.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="Golang" scheme="http://example.com/tags/Golang/"/>
+    <category term="Golang" scheme="https://noname007.github.io/tags/Golang/"/>
     
   </entry>
   
   <entry>
     <title>yii2-queue Redis 源码分析</title>
-    <link href="http://example.com/2021/12/27/yii2-queue.html"/>
-    <id>http://example.com/2021/12/27/yii2-queue.html</id>
+    <link href="https://noname007.github.io/2021/12/27/yii2-queue.html"/>
+    <id>https://noname007.github.io/2021/12/27/yii2-queue.html</id>
     <published>2021-12-27T06:28:34.000Z</published>
     <updated>2025-05-25T13:15:41.518Z</updated>
     
@@ -283,23 +283,23 @@
     
     
     
-    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://noname007.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="PHP" scheme="http://example.com/tags/PHP/"/>
+    <category term="PHP" scheme="https://noname007.github.io/tags/PHP/"/>
     
-    <category term="Yii2" scheme="http://example.com/tags/Yii2/"/>
+    <category term="Yii2" scheme="https://noname007.github.io/tags/Yii2/"/>
     
-    <category term="消息队列" scheme="http://example.com/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
+    <category term="消息队列" scheme="https://noname007.github.io/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
     
-    <category term="Redis" scheme="http://example.com/tags/Redis/"/>
+    <category term="Redis" scheme="https://noname007.github.io/tags/Redis/"/>
     
   </entry>
   
   <entry>
     <title>Go Sarama Kafka 数据丢失分析</title>
-    <link href="http://example.com/2021/12/23/go-invalid-mem-address.html"/>
-    <id>http://example.com/2021/12/23/go-invalid-mem-address.html</id>
+    <link href="https://noname007.github.io/2021/12/23/go-invalid-mem-address.html"/>
+    <id>https://noname007.github.io/2021/12/23/go-invalid-mem-address.html</id>
     <published>2021-12-23T08:56:36.000Z</published>
     <updated>2025-05-25T14:08:29.266Z</updated>
     
@@ -310,21 +310,21 @@
     
     
     
-    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://noname007.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="Golang" scheme="http://example.com/tags/Golang/"/>
+    <category term="Golang" scheme="https://noname007.github.io/tags/Golang/"/>
     
-    <category term="Kafka" scheme="http://example.com/tags/Kafka/"/>
+    <category term="Kafka" scheme="https://noname007.github.io/tags/Kafka/"/>
     
-    <category term="消息队列" scheme="http://example.com/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
+    <category term="消息队列" scheme="https://noname007.github.io/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
     
   </entry>
   
   <entry>
     <title>50岁后继续干程序员</title>
-    <link href="http://example.com/2021/11/30/dairy.html"/>
-    <id>http://example.com/2021/11/30/dairy.html</id>
+    <link href="https://noname007.github.io/2021/11/30/dairy.html"/>
+    <id>https://noname007.github.io/2021/11/30/dairy.html</id>
     <published>2021-11-30T12:48:52.000Z</published>
     <updated>2025-05-25T14:07:35.199Z</updated>
     
@@ -341,15 +341,15 @@
     
     
     
-    <category term="职场" scheme="http://example.com/categories/%E8%81%8C%E5%9C%BA/"/>
+    <category term="职场" scheme="https://noname007.github.io/categories/%E8%81%8C%E5%9C%BA/"/>
     
     
   </entry>
   
   <entry>
     <title>jekyll 使用中遇到的问题</title>
-    <link href="http://example.com/2021/11/30/jekyll-qa.html"/>
-    <id>http://example.com/2021/11/30/jekyll-qa.html</id>
+    <link href="https://noname007.github.io/2021/11/30/jekyll-qa.html"/>
+    <id>https://noname007.github.io/2021/11/30/jekyll-qa.html</id>
     <published>2021-11-30T11:59:05.000Z</published>
     <updated>2024-07-02T14:47:00.946Z</updated>
     
@@ -366,17 +366,17 @@ syntax error (line 52): </summary>
     
     
     
-    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://noname007.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="jekyll" scheme="http://example.com/tags/jekyll/"/>
+    <category term="jekyll" scheme="https://noname007.github.io/tags/jekyll/"/>
     
   </entry>
   
   <entry>
     <title>使用 Python 多线程导入美餐就餐数据</title>
-    <link href="http://example.com/2021/11/05/python-thread.html"/>
-    <id>http://example.com/2021/11/05/python-thread.html</id>
+    <link href="https://noname007.github.io/2021/11/05/python-thread.html"/>
+    <id>https://noname007.github.io/2021/11/05/python-thread.html</id>
     <published>2021-11-05T12:13:32.000Z</published>
     <updated>2025-05-25T12:32:40.888Z</updated>
     
@@ -392,21 +392,21 @@ syntax error (line 52): </summary>
     
     
     
-    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://noname007.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="系统编程" scheme="http://example.com/tags/%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/"/>
+    <category term="系统编程" scheme="https://noname007.github.io/tags/%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/"/>
     
-    <category term="Python" scheme="http://example.com/tags/Python/"/>
+    <category term="Python" scheme="https://noname007.github.io/tags/Python/"/>
     
-    <category term="并发" scheme="http://example.com/tags/%E5%B9%B6%E5%8F%91/"/>
+    <category term="并发" scheme="https://noname007.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
     
   </entry>
   
   <entry>
     <title>多进程实战 - my cron</title>
-    <link href="http://example.com/2021/10/31/my_cron.html"/>
-    <id>http://example.com/2021/10/31/my_cron.html</id>
+    <link href="https://noname007.github.io/2021/10/31/my_cron.html"/>
+    <id>https://noname007.github.io/2021/10/31/my_cron.html</id>
     <published>2021-10-31T15:31:54.000Z</published>
     <updated>2025-05-25T12:32:17.827Z</updated>
     
@@ -417,23 +417,23 @@ syntax error (line 52): </summary>
     
     
     
-    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://noname007.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="Linux" scheme="http://example.com/tags/Linux/"/>
+    <category term="Linux" scheme="https://noname007.github.io/tags/Linux/"/>
     
-    <category term="C" scheme="http://example.com/tags/C/"/>
+    <category term="C" scheme="https://noname007.github.io/tags/C/"/>
     
-    <category term="系统编程" scheme="http://example.com/tags/%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/"/>
+    <category term="系统编程" scheme="https://noname007.github.io/tags/%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/"/>
     
-    <category term="并发" scheme="http://example.com/tags/%E5%B9%B6%E5%8F%91/"/>
+    <category term="并发" scheme="https://noname007.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
     
   </entry>
   
   <entry>
     <title>如何跨主机共享二进制文件 redis-cli？</title>
-    <link href="http://example.com/2021/07/29/copy-tools-in-linux.html"/>
-    <id>http://example.com/2021/07/29/copy-tools-in-linux.html</id>
+    <link href="https://noname007.github.io/2021/07/29/copy-tools-in-linux.html"/>
+    <id>https://noname007.github.io/2021/07/29/copy-tools-in-linux.html</id>
     <published>2021-07-29T07:53:45.000Z</published>
     <updated>2025-05-25T12:32:00.984Z</updated>
     
@@ -448,19 +448,19 @@ syntax error (line 52): </summary>
     
     
     
-    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://noname007.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="Linux" scheme="http://example.com/tags/Linux/"/>
+    <category term="Linux" scheme="https://noname007.github.io/tags/Linux/"/>
     
-    <category term="软件工具" scheme="http://example.com/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/"/>
+    <category term="软件工具" scheme="https://noname007.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
   <entry>
     <title>零宽断言 - 跨行日志匹配</title>
-    <link href="http://example.com/2021/07/07/grap-log-use-regex.html"/>
-    <id>http://example.com/2021/07/07/grap-log-use-regex.html</id>
+    <link href="https://noname007.github.io/2021/07/07/grap-log-use-regex.html"/>
+    <id>https://noname007.github.io/2021/07/07/grap-log-use-regex.html</id>
     <published>2021-07-07T10:52:45.000Z</published>
     <updated>2025-05-25T14:12:50.971Z</updated>
     
@@ -471,19 +471,19 @@ syntax error (line 52): </summary>
     
     
     
-    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://noname007.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="日志" scheme="http://example.com/tags/%E6%97%A5%E5%BF%97/"/>
+    <category term="日志" scheme="https://noname007.github.io/tags/%E6%97%A5%E5%BF%97/"/>
     
-    <category term="Ruby" scheme="http://example.com/tags/Ruby/"/>
+    <category term="Ruby" scheme="https://noname007.github.io/tags/Ruby/"/>
     
   </entry>
   
   <entry>
     <title>Yii2 、socket 与 多进程</title>
-    <link href="http://example.com/2021/06/20/fork-socket.html"/>
-    <id>http://example.com/2021/06/20/fork-socket.html</id>
+    <link href="https://noname007.github.io/2021/06/20/fork-socket.html"/>
+    <id>https://noname007.github.io/2021/06/20/fork-socket.html</id>
     <published>2021-06-20T07:31:40.000Z</published>
     <updated>2025-05-25T13:22:13.834Z</updated>
     
@@ -494,23 +494,23 @@ syntax error (line 52): </summary>
     
     
     
-    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://noname007.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="PHP" scheme="http://example.com/tags/PHP/"/>
+    <category term="PHP" scheme="https://noname007.github.io/tags/PHP/"/>
     
-    <category term="Linux" scheme="http://example.com/tags/Linux/"/>
+    <category term="Linux" scheme="https://noname007.github.io/tags/Linux/"/>
     
-    <category term="Yii2" scheme="http://example.com/tags/Yii2/"/>
+    <category term="Yii2" scheme="https://noname007.github.io/tags/Yii2/"/>
     
-    <category term="系统编程" scheme="http://example.com/tags/%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/"/>
+    <category term="系统编程" scheme="https://noname007.github.io/tags/%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
     <title>rsync 数据备份</title>
-    <link href="http://example.com/2021/06/14/rsync-data.html"/>
-    <id>http://example.com/2021/06/14/rsync-data.html</id>
+    <link href="https://noname007.github.io/2021/06/14/rsync-data.html"/>
+    <id>https://noname007.github.io/2021/06/14/rsync-data.html</id>
     <published>2021-06-14T07:44:35.000Z</published>
     <updated>2025-05-25T13:22:43.649Z</updated>
     
@@ -524,12 +524,12 @@ syntax error (line 52): </summary>
     
     
     
-    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://noname007.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="Linux" scheme="http://example.com/tags/Linux/"/>
+    <category term="Linux" scheme="https://noname007.github.io/tags/Linux/"/>
     
-    <category term="软件工具" scheme="http://example.com/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/"/>
+    <category term="软件工具" scheme="https://noname007.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   

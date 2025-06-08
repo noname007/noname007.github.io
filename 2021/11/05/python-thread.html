@@ -113,7 +113,7 @@
     <meta name="description" content="美餐每天发一个用Excel汇总的就餐数据，我们把它导入到数据库后，行政办公服务用它和公司内的就餐数据进行比对查重。 初始实现是单线程，和import_records去掉多线程后的部分差不多。 读取Excel数据 ---&gt; 发送到行政服务接口 安全起见线上操作放在了晚上进行。运行时发现每条数据导入消耗1s多，晚上十点开始跑这几千条数据想想都让人崩溃。 等着也是干等，下楼转两圈透透气，屋里龌龊的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 Python 多线程导入美餐就餐数据">
-<meta property="og:url" content="http://example.com/2021/11/05/python-thread.html">
+<meta property="og:url" content="https://noname007.github.io/2021/11/05/python-thread.html">
 <meta property="og:site_name" content="西西弗">
 <meta property="og:description" content="美餐每天发一个用Excel汇总的就餐数据，我们把它导入到数据库后，行政办公服务用它和公司内的就餐数据进行比对查重。 初始实现是单线程，和import_records去掉多线程后的部分差不多。 读取Excel数据 ---&gt; 发送到行政服务接口 安全起见线上操作放在了晚上进行。运行时发现每条数据导入消耗1s多，晚上十点开始跑这几千条数据想想都让人崩溃。 等着也是干等，下楼转两圈透透气，屋里龌龊的">
 <meta property="og:locale" content="zh_CN">
@@ -165,7 +165,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":120,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"yv06ESJ2J5KwPSogj0y5aqzY-MdYXbMMI","app_key":"ODnROP22iCurdpYj4tNzJtji","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"gtag":"G-6BTP86WQTS","woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"noname007.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":120,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"yv06ESJ2J5KwPSogj0y5aqzY-MdYXbMMI","app_key":"ODnROP22iCurdpYj4tNzJtji","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"gtag":"G-6BTP86WQTS","woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -452,7 +452,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>使用 Python 多线程导入美餐就餐数据</div>
-      <div>http://example.com/2021/11/05/python-thread.html</div>
+      <div>https://noname007.github.io/2021/11/05/python-thread.html</div>
     </div>
     <div class="license-meta">
       

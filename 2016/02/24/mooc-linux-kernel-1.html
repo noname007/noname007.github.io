@@ -113,18 +113,18 @@
     <meta name="description" content="杨振振  原创作品转载请注明出处  《Linux内核分析》MOOC课程 http:&#x2F;&#x2F;www.xuetangx.com&#x2F;courses&#x2F;course-v1:ustcX+USTC001+_&#x2F;about">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux 内核分析 -- C函数调用栈机制在汇编中的实现">
-<meta property="og:url" content="http://example.com/2016/02/24/mooc-linux-kernel-1.html">
+<meta property="og:url" content="https://noname007.github.io/2016/02/24/mooc-linux-kernel-1.html">
 <meta property="og:site_name" content="西西弗">
 <meta property="og:description" content="杨振振  原创作品转载请注明出处  《Linux内核分析》MOOC课程 http:&#x2F;&#x2F;www.xuetangx.com&#x2F;courses&#x2F;course-v1:ustcX+USTC001+_&#x2F;about">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/assets/imgs/cpu-arch.jpg">
-<meta property="og:image" content="http://example.com/assets/imgs/stack-asm.png">
+<meta property="og:image" content="https://noname007.github.io/assets/imgs/cpu-arch.jpg">
+<meta property="og:image" content="https://noname007.github.io/assets/imgs/stack-asm.png">
 <meta property="article:published_time" content="2016-02-23T23:55:28.000Z">
 <meta property="article:modified_time" content="2025-05-25T17:05:30.944Z">
 <meta property="article:author" content="soul11201">
 <meta property="article:tag" content="Linux 内核分析">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/assets/imgs/cpu-arch.jpg">
+<meta name="twitter:image" content="https://noname007.github.io/assets/imgs/cpu-arch.jpg">
   
   
   
@@ -166,7 +166,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":120,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"yv06ESJ2J5KwPSogj0y5aqzY-MdYXbMMI","app_key":"ODnROP22iCurdpYj4tNzJtji","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"gtag":"G-6BTP86WQTS","woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"noname007.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":120,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"yv06ESJ2J5KwPSogj0y5aqzY-MdYXbMMI","app_key":"ODnROP22iCurdpYj4tNzJtji","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"gtag":"G-6BTP86WQTS","woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -493,7 +493,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>Linux 内核分析 -- C函数调用栈机制在汇编中的实现</div>
-      <div>http://example.com/2016/02/24/mooc-linux-kernel-1.html</div>
+      <div>https://noname007.github.io/2016/02/24/mooc-linux-kernel-1.html</div>
     </div>
     <div class="license-meta">
       

@@ -113,21 +113,21 @@
     <meta name="description" content="假设序列的周期为N，则有：  因为N 为序列的周期，故为整数，又k为整数，所以若序列为周期序列则有：为有理数。即序列的周期性和为有理数为互为充要条件。 那如果已知序列为周期序列那周期为多少呢？下面从下面的式子入手求解。  由上式可知：  可以看到应为k 的取值可以是全体整数，而为有理数，N为整数，故N即为：  找到的最小整数N即为序列的最小周期，当然N的倍数也为序列的周期。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="序列的周期性判断与求法">
-<meta property="og:url" content="http://example.com/2013/04/05/backup_dsp-1.html">
+<meta property="og:url" content="https://noname007.github.io/2013/04/05/backup_dsp-1.html">
 <meta property="og:site_name" content="西西弗">
 <meta property="og:description" content="假设序列的周期为N，则有：  因为N 为序列的周期，故为整数，又k为整数，所以若序列为周期序列则有：为有理数。即序列的周期性和为有理数为互为充要条件。 那如果已知序列为周期序列那周期为多少呢？下面从下面的式子入手求解。  由上式可知：  可以看到应为k 的取值可以是全体整数，而为有理数，N为整数，故N即为：  找到的最小整数N即为序列的最小周期，当然N的倍数也为序列的周期。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/assets/dsp-0.jpg">
-<meta property="og:image" content="http://example.com/assets/dsp-1.jpg">
-<meta property="og:image" content="http://example.com/assets/dsp-3.jpg">
-<meta property="og:image" content="http://example.com/assets/dsp-4.jpg">
-<meta property="og:image" content="http://example.com/assets/dsp-5.jpg">
+<meta property="og:image" content="https://noname007.github.io/assets/dsp-0.jpg">
+<meta property="og:image" content="https://noname007.github.io/assets/dsp-1.jpg">
+<meta property="og:image" content="https://noname007.github.io/assets/dsp-3.jpg">
+<meta property="og:image" content="https://noname007.github.io/assets/dsp-4.jpg">
+<meta property="og:image" content="https://noname007.github.io/assets/dsp-5.jpg">
 <meta property="article:published_time" content="2013-04-05T10:05:23.000Z">
 <meta property="article:modified_time" content="2024-07-02T14:53:59.094Z">
 <meta property="article:author" content="soul11201">
 <meta property="article:tag" content="数字信号处理">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/assets/dsp-0.jpg">
+<meta name="twitter:image" content="https://noname007.github.io/assets/dsp-0.jpg">
   
   
   
@@ -169,7 +169,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":120,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"yv06ESJ2J5KwPSogj0y5aqzY-MdYXbMMI","app_key":"ODnROP22iCurdpYj4tNzJtji","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"gtag":"G-6BTP86WQTS","woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"noname007.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":120,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"yv06ESJ2J5KwPSogj0y5aqzY-MdYXbMMI","app_key":"ODnROP22iCurdpYj4tNzJtji","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"gtag":"G-6BTP86WQTS","woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -455,7 +455,7 @@ src="/assets/dsp-2.jpg" srcset="/img/loading.gif" lazyload />为有理数，N为
   <div class="license-box my-3">
     <div class="license-title">
       <div>序列的周期性判断与求法</div>
-      <div>http://example.com/2013/04/05/backup_dsp-1.html</div>
+      <div>https://noname007.github.io/2013/04/05/backup_dsp-1.html</div>
     </div>
     <div class="license-meta">
       

@@ -113,7 +113,7 @@
     <meta name="description" content="目录 {:toc}  当说到调试器、ide的时候我们期望这个家伙能带来什么  方便修改程序依赖的一些上下文、如环境变量、查找路径 方便源码阅读，如上下文源码、函数、宏、类、实现和结构，变量的类型、值、 方便查看修改运行时态信息，变量信息查看 方便跟踪、断点、单步  大概说了什么呢，我们希望它此时能是一个全家桶、起到一“个”制敌的作用 gdb gdb 是什么？ 跟踪、调试、阅读分析c&#x2F;c++程序、">
 <meta property="og:type" content="article">
 <meta property="og:title" content="这不是一篇 gdb 如何使用的文章">
-<meta property="og:url" content="http://example.com/2016/12/11/gdb.html">
+<meta property="og:url" content="https://noname007.github.io/2016/12/11/gdb.html">
 <meta property="og:site_name" content="西西弗">
 <meta property="og:description" content="目录 {:toc}  当说到调试器、ide的时候我们期望这个家伙能带来什么  方便修改程序依赖的一些上下文、如环境变量、查找路径 方便源码阅读，如上下文源码、函数、宏、类、实现和结构，变量的类型、值、 方便查看修改运行时态信息，变量信息查看 方便跟踪、断点、单步  大概说了什么呢，我们希望它此时能是一个全家桶、起到一“个”制敌的作用 gdb gdb 是什么？ 跟踪、调试、阅读分析c&#x2F;c++程序、">
 <meta property="og:locale" content="zh_CN">
@@ -165,7 +165,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":120,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"yv06ESJ2J5KwPSogj0y5aqzY-MdYXbMMI","app_key":"ODnROP22iCurdpYj4tNzJtji","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"gtag":"G-6BTP86WQTS","woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"noname007.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":120,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"yv06ESJ2J5KwPSogj0y5aqzY-MdYXbMMI","app_key":"ODnROP22iCurdpYj4tNzJtji","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"gtag":"G-6BTP86WQTS","woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -474,7 +474,7 @@ id="调试程序的种类-----按照调试时候程序的运行态来分">调试
   <div class="license-box my-3">
     <div class="license-title">
       <div>这不是一篇 gdb 如何使用的文章</div>
-      <div>http://example.com/2016/12/11/gdb.html</div>
+      <div>https://noname007.github.io/2016/12/11/gdb.html</div>
     </div>
     <div class="license-meta">
       
